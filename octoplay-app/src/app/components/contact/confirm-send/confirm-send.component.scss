@@ -1,0 +1,34 @@
+@import url(../../../_styles/fonts.scss);
+
+.container__block
+{
+
+  font-family: 'Avenir regular';
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 150px;
+  .material-icons{
+    font-size: 150px;
+    color: black;
+    }
+    h1{
+    font-family:'Avenir bold';
+    text-transform: uppercase;
+    }
+    p{
+    margin-bottom: 20px;
+    text-align: center;
+    }
+
+}
+@media screen and (min-width: 1024px) {
+  .container__block{
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  }

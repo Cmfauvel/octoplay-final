@@ -1,0 +1,88 @@
+
+###
+
+POST http://localhost:3000/api/v1/auth/login
+Content-Type: application/json
+
+{
+    "mail": "cm.fauvel@gmail.com",
+    "password": "wwwww1111"
+}
+
+###
+
+POST http://localhost:3000/api/v1/auth/register
+Content-Type: application/json
+
+{
+    "firstName": "Caroline",
+    "lastName": "Fauvel",
+    "mail": "cm.fauvel@gmail.com",
+    "password": "wwwww1111"
+
+}
+
+
+
+### 
+
+POST http://localhost:3000/api/v1/items/8883c557-8c19-4374-93a7-ecbe59503e53/newItem
+Content-Type: application/json
+
+{
+
+    "productId": "1"
+
+}
+
+###
+
+PUT http://localhost:3000/api/v1/user/622c86aa-f6b6-4a97-a2cf-11815324654d/order/total/0dce4457-5609-42bd-b434-83728565762c
+
+
+###
+
+GET http://localhost:3000/api/v1/orders/1dc9bfcb-c30c-45dc-9f46-2842e56ad065
+
+###
+
+GET http://localhost:3000/api/v1/images/1
+Content-Type: application/json
+
+{
+
+    "role": "Principal"
+
+}
+
+###
+
+GET http://localhost:3000/api/v1/orders
+
+
+
+###
+
+PUT http://localhost:3000/api/v1/orders/0dce4457-5609-42bd-b434-83728565762c
+Content-Type: application/json
+
+{
+
+    "addressId": "80e10ecb-2ba1-43dc-b85f-3e29b9aae194"
+
+}
+
+###
+
+PUT http://localhost:3000/api/v1/products/1
+Content-Type: application/json
+
+{
+
+    "CategoryId": 4
+
+}
+
+###
+
+GET http://localhost:3000/api/v1/orders

@@ -1,0 +1,24 @@
+<div class="container">
+    <h2 mat-dialog-title>Modifier la catégorie {{ cat.id }}</h2>
+    <div class="material-icons" (click)="close()">
+      close
+      </div>
+    <mat-dialog-content>
+<form class="form" [formGroup]="editForm" action="" method="">
+        
+    <label for="name">Nom</label>
+    <input type="text" formControlName="name">
+
+    
+    <label for="code">Code</label>
+    <input type="text" formControlName="code" class="form-control">
+
+</form>
+
+</mat-dialog-content>
+
+<div class="alert"  [class.alertShow]="error">{{alertMessage}}</div>
+<mat-dialog-actions>
+  <button class="btn" (click)="save()">Enregistrer</button>
+</mat-dialog-actions>
+</div>

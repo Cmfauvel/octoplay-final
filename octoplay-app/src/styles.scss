@@ -1,0 +1,87 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./app/_styles/fonts.scss";
+@import "./app/_styles/variables.scss";
+
+body, * {
+
+    margin: 0;
+    padding: 0;
+}
+
+*::-webkit-scrollbar {
+  width: 20px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #fdf489;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 20px;
+  border: 3px solid #fdf489;
+}
+
+body {
+    background-color: #fdf8be;
+    width: 100%;
+}
+
+
+.btn {
+  padding: 5px 0px;
+  min-width: 140px;
+  background-color: transparent;
+  outline: none;
+  border: 2px solid black;
+  cursor: pointer;
+  font-family: 'Avenir Regular';
+  font-size: 32px;
+  font-variant-caps: all-small-caps;
+}
+.btn:hover {
+  background-color: black;
+  color: #f7e826;
+}
+.btn:disabled{
+  opacity: 0.5;
+}
+
+.mat-raised-button {
+  box-shadow: none;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  padding: 5px;
+}
+
+.material-icons {
+  color: black;
+}
+
+// .container {
+//   max-width: 100%;
+// }
+
+a {
+  text-decoration: none;
+  color: #f7e826;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  padding: 0 10px;
+  &:active {
+    border: solid 2px black;
+  }
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}

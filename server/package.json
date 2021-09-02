@@ -1,0 +1,39 @@
+{
+  "name": "sequelize-octoplay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cmfauvel/Sequelize-octoplay.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cmfauvel/Sequelize-octoplay/issues"
+  },
+  "homepage": "https://github.com/Cmfauvel/Sequelize-octoplay#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "express-mailer": "^0.3.1",
+    "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.2.5",
+    "nodemailer": "^6.6.1",
+    "nodemon": "^2.0.7",
+    "passport": "^0.4.1",
+    "path": "^0.12.7",
+    "sequelize": "^6.6.2",
+    "sequelize-cli": "^6.2.0",
+    "stripe": "^8.154.0"
+  }
+}

@@ -1,0 +1,13 @@
+@mixin color($value) {
+  color: $value;
+}
+
+@mixin font($style, $size){
+  font-family: $style;
+  font-size: $size;
+}
+
+
+
+$yellow: #f7e826;
+$yellowLight: #fdf8be;

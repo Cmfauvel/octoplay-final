@@ -1,0 +1,20 @@
+.mat-dialog-title{
+  font-family: 'Avenir Bold';
+  font-size: 38px;
+}
+
+.mat-dialog-content{
+  display:flex;
+  flex-direction: column;
+  height: auto;
+    input,select{
+      padding: 9px;
+      padding-left: 15px;
+    }
+    label{
+      font-family: 'Avenir regular';
+    }
+    input{
+      border: 1px solid black;
+    }
+}

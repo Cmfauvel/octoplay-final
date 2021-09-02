@@ -1,0 +1,51 @@
+
+.container {
+    font-family: 'Avenir regular';
+    width: 100%;
+    height: 100%;
+    position: relative;
+    .material-icons {
+      font-size: 60px;
+      position: absolute;
+      right: 15px;
+      top: 5px;
+      cursor: pointer;
+      &:hover {
+        font-size: 70px;
+        transition: all ease 0.1s;
+        -webkit-transition: all ease 0.1s;
+        -moz-transition: all ease 0.1s;
+        -ms-transition: all ease 0.1s;
+        -o-transition: all ease 0.1s;
+  }
+  }
+    .mat-dialog-title{
+      font-family: 'Avenir Bold';
+      font-size: 38px;
+    }
+    
+    
+    
+    .mat-dialog-content{
+      
+      .form {
+        display:flex;
+        flex-direction: column;
+        height: auto;
+          input,select{
+            padding: 9px;
+            padding-left: 15px;
+          }
+          input{
+            border: 1px solid black;
+          }
+      }
+    
+    }
+    .alert {
+      color: red;
+      font-size: 24px;
+      font-family: 'Avenir Bold';
+    }
+  }
+  

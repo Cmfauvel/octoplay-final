@@ -1,0 +1,57 @@
+
+
+<div class="container__grid--mobile">
+
+  <div class="title__page"><p>BAZAR</p></div>
+
+  <mat-grid-list class="grid-list" cols="2" gutterSize="0px" rowHeight="5:6">
+    <mat-grid-tile class="principal-grid" colspan="2">
+      <a class="link" routerLink="{{ bazar.url }}">
+        <span class="title__bazar">{{ bazar.name }}</span>
+        <span class="price__bazar">{{ bazar.price }}</span>
+        <img class="img__bazar" src="{{ bazar.img }}">
+      </a>
+    </mat-grid-tile>
+      <mat-grid-tile class="petite-grid" *ngFor='let bazar of bazars'>
+        <a class="link" routerLink="{{ bazar.url }}">
+          <span class="title__bazar">{{ bazar.name }}</span>
+          <span class="price__bazar">{{ bazar.price }}</span>
+          <img class="img__bazar" src="{{ bazar.img }}">
+        </a>
+      </mat-grid-tile>
+  </mat-grid-list>
+
+</div>
+
+
+<div class="container__grid--desktop"> 
+
+   <div class="title__page"><p>BAZAR</p></div>
+
+   <mat-grid-list class="grid-list" cols="3" gutterSize="0px">
+    <mat-grid-tile class="principal-grid" colspan="3">
+      <a class="link" routerLink="{{ bazar.url }}">
+        <span class="title__bazar">{{ bazar.name }}</span>
+        <span class="price__bazar">{{ bazar.price }}</span>
+        <img class="img__bazar" src="{{ bazar.img }}">
+      </a>
+    </mat-grid-tile>
+      <mat-grid-tile class="petite-grid" *ngFor='let bazar of bazars' colspan="1">
+        <a class="link" routerLink="{{ bazar.url }}">
+          <span class="title__bazar">{{ bazar.name }}</span>
+          <span class="price__bazar">{{ bazar.price }}</span>
+          <img class="img__bazar" src="{{ bazar.img }}">
+        </a>
+      </mat-grid-tile>
+  </mat-grid-list>
+
+</div>
+
+
+
+
+
+
+
+
+

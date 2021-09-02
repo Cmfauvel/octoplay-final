@@ -1,0 +1,92 @@
+<div class="container">
+    <p class="title">Mon panier</p>
+    <div class="steps">
+        <div class="step">
+            <div class="circle">1</div>
+            <p>Adresse</p>
+        </div>
+        <div class="line">_______</div>
+        <div class="step">
+            <div class="circle disabled">2</div>
+            <p>Facturation</p>
+        </div>
+        <div class="line">_______</div>
+        <div class="step">
+            <div class="circle disabled">3</div>
+            <p>Confirmation</p>
+        </div>
+    </div>
+    <div class="blocs">
+        <div class="cards">
+            <form class="card" action="" [formGroup]="selectForm">
+                <div class="input-group" *ngFor="let address of addresses">
+                    <input type="radio" class="radio__button" formControlName="addressId" value="{{address.id}}">
+                    <div class="bloc-address">
+                        <p *ngIf="address.firstName && address.lastName"><strong>Nom complet :
+                            </strong>{{address.firstName}} {{address.lastName}}</p>
+                        <p *ngIf="!address.firstName && !address.lastName"><strong>Nom complet
+                                :</strong>{{currentUser.firstName}} {{currentUser.lastName}}</p>
+                        <p *ngIf="address.society_name"><strong>Société : </strong>{{address.society_name}}</p>
+                        <p><strong> Addresse :</strong> {{address.num}} {{address.street}}</p>
+                        <p>{{address.zip_code}} {{address.city}}</p>
+                        <p>{{address.country}}</p>
+                        <p><strong>Téléphone : </strong>{{address.tel}}</p>
+                        <p *ngIf="address.additionnal_information"><strong>Notes :
+                            </strong>{{address.additionnal_information}}</p>
+                    </div>
+                    <div class="bloc-icons">
+                        <a (click)="openDialogEditAddress(address)">
+                            <span class="material-icons modal-edit">edit</span>
+                        </a>
+                        <a (click)="delete(address.id)">
+                            <span class="material-icons">
+                                delete_outline
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </form>
+            <button class="btn" (click)="openDialogNewAddress()">
+                Ajouter
+            </button>
+        </div>
+        <div class="ban mobile">
+            <h5 class="mobile">Montant total de la commande</h5>
+            <a routerLink="etape2">
+                <button class="btn" (click)="onSubmit()">Valider</button>
+            </a>
+            <p class="mobile">Livraison du colis estimée entre ...</p>
+        </div>
+        <div class="tab desktop">
+            <span class="desktop">
+                <h3>Récapitulatif</h3>
+            </span>
+            <div class="prices">
+                <div class="price__sub" *ngIf="currentOrder">
+                    <p>Sous-total de la commande
+                        <span *ngIf="nbItems < 2">({{nbItems}} article)</span>
+                        <span *ngIf="nbItems > 1">({{nbItems}} articles)</span>
+                    </p>
+                    <p>{{currentOrder.price}}€</p>
+                </div>
+                <hr class="underline">
+                <div class="price__livraison" *ngIf="currentOrder">
+                    <p>Frais de livraison</p>
+                    <p>3,5 €</p>
+                </div>
+                <hr class="underline">
+                <div class="price__livraison" *ngIf="currentOrder">
+                    <p>TVA</p>
+                    <p>20%</p>
+                </div>
+                <hr class="underline">
+                <div class="price__total">
+                    <p>Montant total</p>
+                    <p>{{totalPrice}}€</p>
+                </div>
+                <a routerLink="etape2" >
+                    <button class="btn" (click)="onSubmit()">Valider</button>
+                </a>
+            </div>
+        </div>
+    </div>

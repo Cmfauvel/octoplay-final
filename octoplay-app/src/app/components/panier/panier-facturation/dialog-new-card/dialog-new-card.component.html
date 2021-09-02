@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Ajouter un moyen de payement</h2>
+
+<div class="container__form">
+  <mat-dialog-content>
+    <label for="num__card">Numéros de carte</label>
+    <input type="number">
+
+    <label for="lastName">Titulaire</label>
+    <input type="text">
+
+    <label for="societeName">Date d'expiration</label>
+    <input type="date">
+
+    <label for="num_street">N° </label>
+    <input type="number">
+
+    <label for="address" alt='Code confidentiel'>CVC</label>
+    <input type="number">
+
+
+  </mat-dialog-content>
+</div>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">Enregistrer</button>
+</mat-dialog-actions>

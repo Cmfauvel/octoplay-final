@@ -1,0 +1,170 @@
+<div class="tables">
+    <h3>Produits
+        <span class="material-icons" (click)="showProducts()">
+            expand_more
+        </span>
+    </h3>
+    <table class="table" *ngIf="visibleProducts">
+        <thead>
+            <tr class="head">
+                <th class="col">Id</th>
+                <th class="col">Nom</th>
+                <th class="col">Description</th>
+                <th class="col">Fabrication</th>
+                <th class="col">Utilisation</th>
+                <th class="col">Stock</th>
+                <th class="col">Prix</th>
+            </tr>
+        </thead>
+        <tbody class="rows">
+            <tr class="row" *ngFor="let product of products; let i">
+                <td data-label="Id" id="{{ product.id }}">{{ product.id }}</td>
+                <td data-label="Nom">
+                    {{ product.name }}
+                </td>
+                <td data-label="Description">{{product.description}}</td>
+                <td data-label="Fabrication">{{product.fabrication}}</td>
+                <td data-label="Utilisation">{{product.utilisation}}</td>
+                <td data-label="Stock">{{product.stock}} produits disponibles</td>
+                <td data-label="Prix">{{ product.price }} €</td>
+                <td data-label="Catégorie">{{ product.CategoryId }}</td>
+                <span class="material-icons modal-edit" (click)="openEditProduct(product)">edit</span>
+                <span (click)="deleteProduct(product.id)" class="material-icons">
+                    delete_outline
+                </span>
+            </tr>
+        </tbody>
+    </table>
+    <h3>Images
+        <span class="material-icons" (click)="showImages()">
+            expand_more
+        </span>
+    </h3>
+    <table class="table" *ngIf="visibleImages">
+
+        <thead>
+            <tr class="head">
+                <th class="col">Id</th>
+                <th class="col">Nom</th>
+                <th class="col">Description</th>
+                <th class="col">Produit</th>
+                <th class="col">Path</th>
+                <th class="col">Role</th>
+                <th class="col">Component</th>
+                <th class="col">Size</th>
+                <th class="col">Type</th>
+
+            </tr>
+        </thead>
+        <tbody class="rows">
+            <tr class="row" *ngFor="let image of images; let i" id="{{ image.id }}">
+                <td class="first-col" data-label="Id">{{ image.id }}</td>
+                <td data-label="Description">{{ image.description }}</td>
+                <td data-label="Produit">n°{{ image.ProductId }}</td>
+                <td data-label="Path">{{ image.path }}</td>
+                <td data-label="Role">{{ image.role }}</td>
+                <td data-label="Component">{{ image.component }} || none</td>
+                <td data-label="Size">{{ image.size }}</td>
+                <td data-label="Type">{{ image.type }}</td>
+                <span class="material-icons modal-edit" (click)="openEditImg(image)">edit</span>
+                <span class="material-icons" (click)="deleteImage(image.id)">
+                    delete_outline
+                </span>
+                <div class="img mobile">
+                    <img src="{{image.path}}" alt="">
+                </div>
+            </tr>
+        </tbody>
+    </table>
+    <h3>Catégories
+        <span class="material-icons" (click)="showCats()">
+            expand_more
+        </span>
+    </h3>
+    <table class="table" *ngIf="visibleCats">
+        <thead>
+            <tr class="head">
+                <th class="col">Id</th>
+                <th class="col">Nom</th>
+                <th class="col">Code</th>
+            </tr>
+        </thead>
+        <tbody class="rows">
+            <tr class="row" *ngFor="let cat of cats; let i">
+                <td data-label="Id" id="{{ cat.id }}">{{ cat.id }}</td>
+                <td data-label="Nom">
+                    {{ cat.name_cat }}
+                </td>
+                <td data-label="Code">{{cat.code_cat}}</td>
+                <span class="material-icons modal-edit" (click)="openEditCat(cat)">edit</span>
+                <span class="material-icons" (click)="deleteCat(cat.id)">
+                    delete_outline
+                </span>
+            </tr>
+        </tbody>
+    </table>
+    <h3>Commandes
+        <span class="material-icons" (click)="showOrders()">
+            expand_more
+        </span>
+    </h3>
+    <table class="table" *ngIf="visibleOrders">
+        <thead>
+            <tr class="head">
+                <th class="col">Id</th>
+                <th class="col">Adresse</th>
+                <th class="col">Prix HT</th>
+                <th class="col">Prix TTC</th>
+                <th class="col">Frais de livraison</th>
+                <th class="col">Statut</th>
+                <th class="col">Utilisateur</th>
+                <th class="col">Items</th>
+            </tr>
+        </thead>
+        <tbody class="rows">
+            <tr class="row" *ngFor="let order of orders; let i">
+                <td data-label="Id" id="{{ order.id }}">{{ order.id }}</td>
+                <td data-label="Adresse" *ngIf="order.address">
+                    <p *ngIf="order.address.lastName || order.address.society_name">{{ order.address.lastName }} {{
+                        order.address.firstName }}{{ order.address.society_name }}</p>
+                    <p *ngIf="!order.address.lastName && !order.address.society_name">{{ order.user.lastName }} {{
+                        order.user.firstName }}</p>
+                    <p>{{ order.address.additionnal_information }}</p>
+                    <p>{{ order.address.num }} {{ order.address.street }}</p>
+                    <p>{{ order.address.zip_code }} {{ order.address.city }}</p>
+                    <p>{{ order.address.country }}</p>
+                </td>
+                <!-- <td data-label="Nom">
+                    {{ order.address.lastName }} {{ order.address.firstName }}
+                </td> -->
+                <td data-label="Prix HT">{{order.price}}</td>
+                <td data-label="Prix TTC">{{order.total_price}}</td>
+                <td data-label="Frais de livraison">{{order.delivry_cost}}</td>
+                <td data-label="Statut">{{order.status}}</td>
+                <td data-label="Items">
+                    <ul>
+                        <li *ngFor="let item of order.items">
+                            <p>
+                                <strong>Id produit :</strong>{{item.ProductId || json}}
+                            </p>
+                            <p>
+                                <strong>Quantité :</strong>{{item.qty|| json}}
+                            </p>
+                        </li>
+                    </ul>
+                </td>
+                <td data-label="Utilisateur">
+
+                    {{ order.user.lastName }} {{ order.user.firstName }}
+
+                </td>
+                <span class="material-icons modal-edit" (click)="openEditOrder(order)">edit</span>
+                <span class="material-icons" (click)="deleteOrder(order.id)">
+                    delete_outline
+                </span>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>

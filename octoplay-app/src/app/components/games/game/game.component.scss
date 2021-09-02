@@ -1,0 +1,79 @@
+@import url(../../../_styles/fonts.scss);
+
+.container {
+  width: 100%;
+  height: calc(100vh - 60px);
+  .cards-img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: -5;
+    .card.img {
+      width: 100%;
+      min-height: 30%;
+      overflow: hidden;
+      .img__game {
+        width: 100%;
+        float: center;
+      }
+    }
+  }
+  .cards-products {
+    width: 100%;
+    // display: flex;
+    // flex-flow: column wrap;
+    .card {
+      width: 100%;
+      display: block;
+      position: relative;
+      height: 30vh;
+      .hover {
+        .title__game {
+          bottom: 0px;
+          left: 5px;
+          z-index: 2;
+          font-family: "Avenir Bold";
+          font-size: 26px;
+          font-variant-caps: all-small-caps;
+        }
+        .price__game {
+          bottom: 0px;
+          right: 5px;
+          z-index: 2;
+          font-family: "Avenir Regular";
+          font-size: 26px;
+          font-variant-caps: all-small-caps;
+        }
+      }
+      .img {
+        z-index: -5;
+        width: 100%;
+        min-height: 30%;
+        overflow: hidden;
+        .img__game {
+          width: 100%;
+          float: center;
+        }
+      }
+    }
+    
+  }
+}
+@media screen and (min-width: 1024px) {
+  .container__grid {
+    .cards-products {
+      flex-flow: row wrap;
+      width: 100%;
+      .card {
+        width: 33%;
+        height: width;
+      }
+      .test {
+        width: 100%;
+        height: 400px;
+      }
+
+    }
+  }
+}

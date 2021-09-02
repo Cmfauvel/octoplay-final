@@ -1,0 +1,104 @@
+
+
+<div class="container" *ngIf="game">
+
+    <div class="bloc__head">
+        <div class="head-img" *ngIf="images">
+            <img class="img__game" src="{{headImg?.path}}" description="{{headImg?.description}}">
+        </div>
+
+        <div class="text">
+            <h1 class="title__game">{{game.name}}</h1>
+            <p>{{game.description}}
+            </p>
+            <div class="row">
+                <span id="price-game">{{game.price}}€</span>
+                <span id="status-on" *ngIf="game.stock > 0">EN STOCK</span>
+                <span id="status-off" *ngIf="game.stock == 0">En rupture</span>
+            </div>
+
+            <div class="container__btn">
+                <app-button-add-order-items [orderItemId]="idGame"></app-button-add-order-items>
+            </div>
+            
+        </div>
+    </div>
+    <h1 class="title">Utilisation</h1>
+    <div class="bloc">
+        <div class="column__img" *ngIf="images">
+            <img class="img__game" src="{{secondImg.path}}" description="{{secondImg.description}}">
+        </div>
+        <div class="column">
+            <p class="text right">{{game.utilisation}}
+            </p>
+        </div>
+    </div>
+    <h1 class="title">Fabrication</h1>
+    <div class="bloc">
+        <div class="column">
+            <p class="text">{{game.fabrication}}
+            </p>
+        </div>
+        <div class="column__img" *ngIf="images">
+            <img class="img__game" src="{{thirdImg.path}}" description="{{thirdImg.description}}">
+        </div>
+
+    </div>
+
+
+</div>
+<!-- 
+<div class="container">
+    <mat-grid-list class="grid-list" cols="3" gutterSize="0px" rowHeight="2:3">
+        <mat-grid-tile class="grid-img-head" colspan="3">
+            <img class="img__game" src="../../assets/image_test/image1.png">
+        </mat-grid-tile>
+        <mat-grid-tile class="grid__text--large" colspan="3">
+            <div class="text">
+                <h1 class="title__game">Re Cycle Plastique</h1>
+                <p>Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis.
+                    Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis.
+                    Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis.
+                    Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis.
+                    Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis.
+                    Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis.
+                </p>
+                <div class="row">
+                    <span id="price-game">9.99€</span>
+                    <span id="status">EN STOCK</span>
+                    <app-button-add-order-items [orderItem]="game"></app-button-add-order-items>
+                </div>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile class="grid__img--small" colspan="1" rowHeight="3:4">
+
+            <img class="img__game" src="../../assets/image_test/image2.png">
+
+        </mat-grid-tile>
+        <mat-grid-tile class="grid__text" colspan="2">
+            <div class="container__text">
+                <h1 class="title__game">Utilisation du jeu</h1>
+                <ul class="list">
+                    <li>Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis.</li>
+                    <li>Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis.</li>
+                    <li>Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis.</li>
+                </ul>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile class="grid__text" colspan="2">
+            <div class="container__text">
+                <h1 class="title__game">Utilisation du jeu</h1>
+                <ul class="list">
+                    <li>Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis.</li>
+                    <li>Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis.</li>
+                    <li>Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis.</li>
+                </ul>
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile class="grid__img--small" colspan="1">
+
+            <img class="img__game" src="../../assets/image_test/image2.png">
+
+        </mat-grid-tile>
+    </mat-grid-list>
+</div> -->

@@ -1,0 +1,17 @@
+<div class="container">
+    <h2>Ajouter une catégorie</h2>
+    
+<form class="form" [formGroup]="uploadForm" action="" method="">
+        
+    <label for="name">Nom</label>
+    <input type="text" formControlName="name">
+
+    
+    <label for="code">Code</label>
+    <input type="text" formControlName="code" class="form-control">
+
+</form>
+
+<div class="alert"  [class.alertShow]="error">{{alertMessage}}</div>
+  <button class="btn" (click)="save()">Ajouter</button>
+</div>

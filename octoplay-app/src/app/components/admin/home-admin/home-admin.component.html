@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="menu">
+        <ul class="list-inline">
+            <li class="link" (click)="showData()">Mes données</li>
+            <li class="link" (click)="uploadProduct()">Products</li>
+            <li class="link" (click)="uploadImage()">Images</li>
+            <li class="link" (click)="uploadCategory()">Catégories</li>
+        </ul>
+    </div>
+    <div class="contents">
+        <app-data *ngIf="onData" [products]="products" [cats]="cats" [images]="images"></app-data>
+    <app-upload-product *ngIf="onProduct" [cats]="cats"></app-upload-product>
+    <app-upload-picture *ngIf="onImage" [products]="products"></app-upload-picture>
+    <app-upload-category *ngIf="onCategory"></app-upload-category>
+    </div>
+</div>

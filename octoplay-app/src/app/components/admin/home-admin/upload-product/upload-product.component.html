@@ -1,0 +1,33 @@
+<div class="container">
+    <h2>Ajouter un produit</h2>
+   
+<form class="form" [formGroup]="uploadForm" action="" method="" *ngIf="showForm">
+        
+    <label for="name">Nom</label>
+    <input type="text" formControlName="name">
+
+    
+    <label for="description">Description</label>
+    <input type="text" formControlName="description" class="form-control">
+
+    <label for="utilisation">Utilisation</label>
+    <input type="text" formControlName="utilisation" class="form-control">
+
+    <label for="fabrication">Fabrication</label>
+    <input type="text" formControlName="fabrication" class="form-control">
+
+    <label for="price">Prix</label>
+    <input type="text" formControlName="price">
+
+    <label for="stock">Stock</label>
+    <input type="text" formControlName="stock">
+    
+    <label for="cat">Catégorie</label>
+    <select formControlName="cat">
+        <option value="{{cat.id}}" *ngFor="let cat of cats">{{cat.name_cat}}</option>
+    </select>
+</form>
+<div class="alert"  [class.alertRed]="error" *ngIf="alertMessage">{{alertMessage}}</div>
+  <button class="btn" (click)="save()">Ajouter</button>
+
+</div>

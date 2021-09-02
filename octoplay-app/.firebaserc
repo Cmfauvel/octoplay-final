@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "octoplay-test": {
+      "hosting": {
+        "octoplay-app": [
+          "octoplay-test"
+        ]
+      }
+    }
+  }
+}

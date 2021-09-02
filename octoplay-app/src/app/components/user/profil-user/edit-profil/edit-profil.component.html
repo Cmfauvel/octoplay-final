@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="title__page"><p>Editer vos <br> information</p></div>
+
+  <form class="form" [formGroup]="editForm" method="update" *ngIf="currentUser">
+  
+    <label for="lastName">Nom</label>
+    <input type="text" formControlName="lastName" id="lastName" class="form-control" placeholder="{{ currentUser.lastName }}">
+    <label for="firstName">Prénom</label>
+    <input type="text" formControlName="firstName" id="firstName" class="form-control" placeholder="{{ currentUser.firstName }}">
+    <label for="">Adresse mail</label>
+    <input type="email" formControlName="mail" name="mail" id="email" class="form-control" placeholder="{{ currentUser.mail }}">
+   
+</form>
+
+  <!-- <a routerLink='/../../profil'> -->
+    <div class="alert"  [class.alertShow]="error">{{alertMessage}}</div>
+    <button class="btn" router (click)="onSubmit()">valider</button>
+  <!-- </a> -->
+</div>
+
+<div class="logo"><img src="../../../../assets/logo/logo.svg" alt="logo"></div>

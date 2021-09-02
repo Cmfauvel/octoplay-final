@@ -1,0 +1,36 @@
+<div class="container">
+    <h1 class="title__page">Connexion</h1>
+    <form class="log-in-form" [formGroup]="loginForm">
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage != null">{{errorMessage}}</div>
+        <label for="">Adresse mail</label>
+        <input formControlName="mail" name="mail" class="input form-control" type="email">
+
+        <label for="password">Mot de passe</label>
+      <input [type]="fieldTextType ? 'text' : 'password'" class="input form-control" formControlName="password"
+        name="password" />
+      <div class="input-group-append">
+        <span class="input-group-text">
+          <i class="fas" [ngClass]="{
+          'fa-eye-slash': !fieldTextType,
+          'fa-eye': fieldTextType
+        }" (click)="toggledEye()"></i> </span>
+      </div>
+        <a class="mdp__oublie" routerLink='recuperationmdp'><span>Mot de passe oublié</span></a>
+
+        <div class="checkbox">
+            <input type="checkbox" name="" id="">
+            <span>Se souvenir de moi</span>
+        </div>
+    </form>
+    <div class="btns">
+        <button class="btn" [disabled]="loginForm.invalid" (click)="seConnecter()">Connexion</button>
+
+        <p>Pas encore de compte ?</p>
+        <a [routerLink]="['/inscription']">
+            <button class="btn btn__inscription">Inscription</button>
+        </a>
+    </div>
+    <div class="logo"><img src="../../../../assets/logo/logo.svg" alt="logo"></div>
+</div>
+
+

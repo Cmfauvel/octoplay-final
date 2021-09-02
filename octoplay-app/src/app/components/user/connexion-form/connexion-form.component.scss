@@ -1,0 +1,75 @@
+@import url(../../../_styles/fonts.scss);
+
+.container {
+  width: 100%;
+  .title__page {
+    font-family: "Avenir Bold";
+    font-size: 40px;
+    margin-left: 30px;
+  }
+  .log-in-form {
+    display: flex;
+    flex-direction: column;
+    font-family: "Avenir Regular";
+    padding: 30px;
+    width: calc(100%-60px);
+    .input {
+      padding: 0;
+      width: 100%;
+    }
+    .alert {
+      color: red;
+      font-family: "Avenir Bold";
+    }
+    .input {
+      height: 40px;
+      border: none;
+    }
+    .mdp__oublie {
+      text-decoration: underline;
+      color: black;
+      align-self: flex-end;
+      font-size: 16px;
+    }
+  }
+  .btns {
+    .btn {
+      margin-left: 30px;
+    }
+    p {
+      font-family: "Avenir Bold";
+      margin-left: 30px;
+      margin-top: 50px;
+      font-size: 17px;
+    }
+  }
+}
+
+.logo {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    margin-top: 150px;
+    margin-bottom: 100px;
+    .log-in-form {
+      margin-top: 20px;
+    }
+    p {
+      margin-top: 50px;
+    }
+    .logo {
+      display: block;
+      width: 220px;
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      z-index: -5;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}

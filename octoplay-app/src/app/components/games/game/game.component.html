@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="cards-products">
+    <div class="card" *ngFor='let game of games; let i'>
+      <div class="hover">
+        <span class="title__game">{{ game.name }}</span>
+        <span class="price__game">{{ game.price }}</span>
+        <!-- </a> -->
+        <div class="buttons">
+          <button class="btn" [routerLink]="[game.id]">VOIR</button>
+          <!-- <app-button-add-order-items [orderItems]="games"></app-button-add-order-items> -->
+        </div>
+      </div>     
+      <div class="img" *ngFor="let image of images; let j" [class.block]="j == i">
+        <img class="img__game" src="{{image.path}}">
+      </div>
+      
+    </div>
+  </div>
+  <!-- <div class="cards-img">
+    <div class="card img" *ngFor="let image of images; let j" [class.block]="j == i">
+      <img class="img__game" src="{{image.path}}" *ngIf="j != null">
+    </div>
+  </div> -->
+  <!-- <div class="text">Recycle plastique
+    “Recycle Plastique” est un jeu à visée pédagogique qui combine les principes des jeux de dominos et des jeux de devinettes. Cette activité, créée par l'ONG Octop'us, a pour but de rendre accessible et ludique la sensibilisation des participants aux enjeux que représentent le plastique. Ainsi, vous allez suivre les péripéties qui rythment le parcours d’un objet plastique. Découvrez les secrets de sa fabrication, les dessous de son impact sur notre environnement, les enjeux de son utilisation et les solutions pour le recycler de manière aussi durable que possible. 
+      Le but du jeu est simplement de coopérer dans le but de recréer le cycle de vie d'un objet en plastique, pour finalement percer à jour les véritables questions que soulèvent son existence et son rôle. Il symbolise efficacement une approche nouvelle de la consommation et du recyclage et permet, à travers son livret explicatif, d'approfondir notre connaissance d'un sujet qui s'est imposé comme capital.
+      Pour les petits comme pour les grands, « Recycle Plastique » c'est surtout l'occasion d'apprendre tout en s'amusant, de passer un bon moment ensemble tout en ayant l'opportunité de découvrir un élément incontournable de notre monde et de notre consommation quotidienne. 
+      Alors, prêt pour ce voyage enrichissant ?
+    </div> -->
+</div>

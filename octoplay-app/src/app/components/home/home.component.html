@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="container__grid--mobile">
+
+    <!-- <div class="title__page"><p>Jeux</p></div> -->
+  
+    <mat-grid-list class="grid-list" cols="1" gutterSize="0px">
+        <mat-grid-tile class="petite-grid" *ngFor='let game of games'>
+          <a class="link" routerLink="{{ game.url }}">
+            <span class="title__game">{{ game.name }}</span>
+            <img *ngFor="let image of images; let j" class="img__game" src="{{ image.path }}">
+          </a>
+        </mat-grid-tile>
+    </mat-grid-list>
+  
+  </div>
+  
+  
+  
+   <div class="container__carousel--desktop">
+    <!-- <span class="material-icons" id="arrow-left">
+      chevron_left
+      </span>
+      <span class="material-icons" id="arrow-right">
+        chevron_right
+        </span> -->
+  
+    <mat-carousel class="mat-carousel"
+      timings="500ms ease-in"
+      [autoplay]="true"
+      interval="5000"
+      color="primary"
+      maxWidth="100%"
+      proportion="100"
+      slides="3"
+      [loop]="true"
+      [hideArrows]="true"
+      [hideIndicators]="true"
+      [useKeyboard]="true"
+      [useMouseWheel]="false"
+      orientation="ltr">
+  
+      <mat-carousel-slide class="container__carousel-slides"
+        #matCarouselSlide
+        *ngFor="let image of images; let i = index"
+        [image]="image.path"
+        proportion="100"
+        overlayColor="#00000040"
+        [hideOverlay]="false">
+        <h2 *ngFor='let game of games'>{{game.name}}</h2>
+      </mat-carousel-slide>
+      <!-- <mat-carousel-slide class="container__carousel-slides"
+        #matCarouselSlide
+        *ngFor="let game of games; let i = index"
+        [image]="game.img"
+        proportion="100"
+        overlayColor="#00000040"
+        [hideOverlay]="false">
+        <h2>{{game.name}}</h2>
+      </mat-carousel-slide> -->
+  
+    </mat-carousel>
+   </div>
+  
+</div>

@@ -1,0 +1,18 @@
+@import url(../_styles/fonts.scss);
+
+.container {
+    display: none;
+}
+@media screen and (min-width: 1024px) {
+    .container {
+        width: calc(100% - 30px);
+        padding: 15px;
+        font-family: "Avenir Bold";
+        display: flex;
+        justify-content: space-between;
+        .column {
+            min-height: 20px;
+            align-self: flex-end;
+        }
+    }
+}

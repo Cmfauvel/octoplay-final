@@ -1,0 +1,49 @@
+
+<div class="container__nav" [class.small]="menuOpen"
+[ngClass]="{ 'nav-closed' : isClosed }"
+(mouseenter)="menuDesktopOpen($event)"
+(mouseleave)="menuDesktopClosed($event)">
+
+    <div class="container__logo" [ngClass]="{ 'showLogo' : isClosed }"><a routerLink="/">
+        <img src="../../assets/Grouplogo.png" alt="">
+    </a>
+    </div>
+    <a routerLink="" class="text__logo"  [ngClass]="{ 'hideDesktop' : isClosed }">Octoplay</a>
+    <div class="material-icons icon-more" (click)="openMenu()" [class.clicked]="isClicked">
+        addz
+        </div>
+        <div class="menu hide" [class.toggled]="classToggled" [ngClass]="{ 'hideDesktop' : isClosed }">
+            <ul class="list__nav nav--inline">
+                <li class="list__nav--links" routerLinkActive="active">
+                    <a class="link__user" routerLink="/panier">Panier</a>
+                </li>
+                <li class="list__nav--links" routerLinkActive="active" *ngIf="currentUser != null">
+                    <a class="link__user icon" routerLink="/profil"><div class="material-icons">
+                        person
+                        </div></a>
+                </li>
+                <li class="list__nav--links" routerLinkActive="active" *ngIf="currentUser != null && currentUser.role_id == 2">
+                    <a class="link__user icon" routerLink="/admin">
+                        <div class="material-icons">
+                            settings
+                            </div>
+                    </a>
+                </li>
+                <li class="list__nav--links" (click)="logout()" *ngIf="currentUser != null">
+                    <a class="link__user icon" routerLink="/"  (click)="logout()"><div class="material-icons">
+                        logout
+                        </div></a>
+                </li>
+                <li class="list__nav--links" routerLinkActive="active" *ngIf="currentUser == null">
+                    <a class="link__user" routerLink="/connexion">Se connecter</a>
+                </li>
+            </ul>
+            <ul class="list__nav nav--vertical" >
+                <li class="list__nav--links {{ item.title }}" *ngFor="let item of items" [class.links__closed]="isClosed">
+                    <a class="link__menu" (click)="resetMouseFirstOut()" routerLink="{{ item.url }}">
+                          <span class="link">{{ item.title }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+</div>

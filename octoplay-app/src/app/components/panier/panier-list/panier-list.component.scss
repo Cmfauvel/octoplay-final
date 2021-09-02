@@ -1,0 +1,162 @@
+@import url(../../../_styles/fonts.scss);
+
+
+.desktop {
+  display: none;
+}
+.container {
+  font-family: "Avenir Regular";
+  max-height: calc(100vh - 60px);
+  .title p {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    z-index: 11;
+    font-family: "Octypo";
+    font-variant-caps: all-small-caps;
+    font-size: 62px;
+  }
+  .blocs {
+    display: flex;
+    flex-flow: nowrap column;
+    width: 100%;
+    margin-top: 90px;
+    .bloc {
+      h3 {
+        font-size: 30px;
+      }
+     .rows {
+       display: flex;
+       flex-direction: column;
+       .row {
+         display: flex;
+         height: 300px;
+         .column {
+           width: 50%;
+           height: 100%;
+           overflow: hidden;
+           display: flex;
+           justify-content: center;
+           img {
+             height: 100%;
+           }
+         }
+         .text {
+           display: flex;
+           height: 300px;
+           justify-content: space-between;
+           align-items: flex-start;
+           font-weight: bold;
+           .details {
+             align-self: flex-end;
+             display: flex;
+             flex-direction: column;
+           }
+         }
+       }
+     }
+    }
+    .list {
+      min-height: 300px;
+      max-height: calc(100vh - 300px);
+      overflow-y: scroll;
+      margin-left: 20px;
+      width: calc(100% - 20px);
+    }
+    .tab {
+      position: absolute;
+      bottom: 65px;
+      width: 100%;
+      font-family: "Avenir Regular";
+      background-color: #fdf489;
+      margin-top: 20px;
+      max-height: calc(240px);
+      .prices {
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid black;
+        padding-top: 20px;
+
+        .price__livraison,
+        .price__total,
+        .price__sub {
+          display: flex;
+          justify-content: space-between;
+          padding: 0 25px;
+          p {
+            margin: 0;
+          }
+        }
+        .price__total {
+          font-family: "Avenir Bold";
+          padding-bottom: 10px;
+        }
+        .underline {
+          width: 90%;
+          margin-left: 5%;
+          padding: 0;
+        }
+      }
+      .ban {
+        width: 100%;
+        min-height: 80px;
+        background-color: white;
+        box-shadow: 0px 0px 12px 3px gray;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        h5 {
+          margin: 5px 0;
+        }
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px){
+  .container {
+    margin-bottom: 50px;
+      max-height: none;
+    .desktop {
+      display: flex;
+      width: 100%;
+      .img {
+        width: 100%;
+        max-height: 40vw;
+        overflow: hidden;
+        img {
+          width: 100%;
+          height: auto; 
+        }
+      }
+    }
+    .blocs {
+      margin-top: 0;
+      .tab {
+        position: relative;
+        margin-top: -30px;
+        .ban {
+          background-color: transparent;
+          box-shadow: none;
+          align-items: flex-end;
+          padding: 0;
+          .mobile {
+            display: none;
+          }
+        }
+      }
+      .list {
+        width: 50%;
+        margin-left: 0;
+      }
+    }
+  }
+  
+  
+}
+

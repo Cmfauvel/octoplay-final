@@ -1,0 +1,72 @@
+
+
+<div class="container">
+  <div class="img" *ngIf="headImg">
+    <img src="{{headImg.path}}" alt="{{headImg.description}}">
+  </div>
+  <section class="section large">
+    <h2 class="title-section">octoplay</h2>
+    <div class="text">Octoplay est une plateforme de vente en ligne créée par l’association Octop’us afin de pouvoir mettre à disposition de chacun des outils pédagogiques de sensibilisation autour des causes environnementales.
+      Ces jeux uniques et ludiques ont été imaginés par l’association, en collaboration avec des entreprises partenaires et des bénévoles. Cela permet à la fois d’avoir des contenus originaux à proposer lors de nos interventions, mais aussi de les rendre accessible à tout le monde, grâce à cette plateforme. 
+      Si les produits sont payants, c’est surtout pour pouvoir créer des contenus de qualité, dans le fond et dans la forme. Les bénéfices sont reversés à l’association afin qu’elle puisse conceptualiser d’autres outils qui mettent en avant nos partenaires, mais aussi pour pouvoir financer des actions concrètes de dépollution. 
+      
+    </div>
+  </section>
+  <section class="section">
+    <h2 class="title-section" id="contact">OCTOP'US</h2>
+    <div class="columns">
+      <div class="column" *ngIf="middleImg">
+        <img src="{{middleImg.path}}" alt="{{middleImg.description}}">
+      </div>
+      <div class="column">
+        <a href="https://octopus-ntw.com"><button class="btn">OCTOPUS</button></a>
+        <div class="container__network">
+          <a href="https://www.facebook.com/octopus.ntw/">
+            <div class="material-icons">facebook</div>
+          </a>
+          <a href="mailto:octopus-ntw@gmail.com">
+            <div class="material-icons">email</div>
+          </a>
+        </div>
+      </div>
+      <div class="column" id="address">
+        <h3>ADRESSE</h3>
+        <p>4, rue de la coopérative</p>
+        <p>67000 Strasbourg</p>
+        <p>octopus-ntw@gmail.com</p>
+        <p>03 12 34 56 78</p>
+        <br>
+        <br>
+        <h3>Formulaire de contact</h3>
+        <br>
+        <a routerLink="/contact"><button class="btn">ICI</button></a>
+      </div>
+    </div>
+    <div class="text">Octop’us est une Organisation Non Gouvernementale environnementale basée à Strasbourg et opérant à l’échelle locale, mais aussi nationale et internationale. L’engagement de l’ONG est porté autour de la protection des écosystèmes aquatiques et se manifeste par des actions de diverses natures. Ainsi, Octop’us s’investit depuis 2019, de manière directe ou indirecte, dans plusieurs projets qui luttent contre la pollution.
+      En s’appuyant sur une stratégie inclusive, Octop’us vise à connecter et fédérer celles et ceux qui s’investissent ou veulent s’investir dans la réduction de notre impact sur l’environnement. La philosophie de l’association s’axe sur un ton déculpabilisant pour le public qui sera par conséquent plus encouragé à agir à son échelle et faire sa part.
+      Grâce aux partenaires, aux financeurs et au réseau d’Octop’us, l’ONG a su évoluer et toujours élargir le champ de ses actions. En effet, les objectifs sont plus ambitieux et les missions prennent en compte plus de paramètres afin d’être menées efficacement.
+      </div>
+  </section>
+  <section class="section">
+    <h2 class="title-section" id="partners">Nos partenaires</h2>
+    <div class="columns">
+      <div class="carousel">
+        <mat-carousel class="mat-carousel" timings="500ms ease-in" [autoplay]="true" interval="5000" color="accent"
+          maxWidth="100%" proportion="110" slides="3" [loop]="true" [hideArrows]="true" [hideIndicators]="false"
+          [useKeyboard]="true" [useMouseWheel]="false" orientation="ltr">
+          <!-- <mat-carousel-slide class="container__carousel-slides" #matCarouselSlide
+            *ngFor="let game of games; let i = index" [image]="" proportion="100" overlayColor="#00000040"
+            [hideOverlay]="false">
+            <h2>{{game.name}}</h2>
+          </mat-carousel-slide> -->
+        </mat-carousel>
+      </div>
+      <ul class="list">
+        <li>Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis. </li>
+        <li>Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis. </li>
+        <li>Arcu felis ipsum elit donec quam. Praesent etiam congue nunc augue! Molestie mattis. </li>
+      </ul>
+    </div>
+  </section>
+  <div class="logo"><img src="../../../../assets/logo/logo.svg" alt="logo"></div>
+</div>

@@ -1,0 +1,104 @@
+
+
+.container__grid--desktop {
+  display: none;
+}
+.container__grid--mobile {
+  .title__page {
+    font-family: "Octypo";
+    font-size: 52px;
+    font-variant-caps: all-small-caps;
+    margin-left: 15px;
+    p {
+      position: fixed;
+      z-index: 99;
+    }
+  }
+  .grid-list {
+    margin-bottom: 85px;
+    mat-grid-tile {
+      background-color: #ffff;
+      .link {
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: black;
+        .img__bazar {
+          width: 100%;
+          height: 100%;
+        }
+        .title__bazar {
+          position: absolute;
+          bottom: 0px;
+          left: 5px;
+          z-index: 2;
+          font-family: "Avenir Bold";
+          font-size: 26px;
+          font-variant-caps: all-small-caps;
+        }
+        .price__bazar {
+          position: absolute;
+          bottom: 0px;
+          right: 5px;
+          z-index: 2;
+          font-family: "Avenir Regular";
+          font-size: 26px;
+          font-variant-caps: all-small-caps;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container__grid--mobile {
+    display: none;
+  }
+  .container__grid--desktop {
+    display: block;
+    .title__page {
+      font-family: "Octypo";
+      font-size: 52px;
+      font-variant-caps: all-small-caps;
+      position: fixed;
+      z-index: 11;
+      top: 0px;
+      right: 50px;
+    }
+    .grid-list {
+      margin-left: 70px;
+      margin-bottom: 85px;
+      mat-grid-tile {
+        background-color: #ffff;
+        .link {
+          width: 100%;
+          height: 100%;
+          text-decoration: none;
+          color: black;
+          .img__bazar {
+            width: 100%;
+            height: 100%;
+          }
+          .title__bazar {
+            position: absolute;
+            bottom: 0px;
+            left: 5px;
+            z-index: 2;
+            font-family: "Avenir Bold";
+            font-size: 26px;
+            font-variant-caps: all-small-caps;
+          }
+          .price__bazar {
+            position: absolute;
+            bottom: 0px;
+            right: 5px;
+            z-index: 2;
+            font-family: "Avenir Regular";
+            font-size: 26px;
+            font-variant-caps: all-small-caps;
+          }
+        }
+      }
+    }
+  }
+}

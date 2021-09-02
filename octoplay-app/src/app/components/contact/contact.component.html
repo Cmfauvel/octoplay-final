@@ -1,0 +1,20 @@
+<div class="container-form">
+  <div class="img" *ngIf="image">
+    <img src="{{image.path}}" alt="{{image.description}}">
+  </div>
+    <h2>Contactez-nous</h2>
+    <form class="form" (submit)="sendEmail($event)">
+      <label for="">Nom complet</label>
+      <input class="input" type="subject" name="user_name">
+      <label for="">Mail</label>
+      <input class="input" type="email" name="user_email">
+
+      <label class="subject" for="">Sujet</label>
+      <input class="input" type="text" name="subject">
+
+      <label class="msg" for="">Message</label>
+      <textarea class="input" name="message" class="textarea" rows="8" cols="1"></textarea>
+      <button class="btn" type="submit">Envoyer</button>
+    </form>
+    
+  </div>

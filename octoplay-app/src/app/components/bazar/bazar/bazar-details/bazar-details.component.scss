@@ -1,0 +1,38 @@
+
+.container__description{
+  font-family: 'Avenir regular';
+  background-color: #fff;
+  position: absolute;
+  height: 50%;
+  h2{
+    margin-left: 15px;
+    
+    font-family: 'Avenir Bold';
+    font-size: 38px;
+    z-index: 5;
+    text-transform: uppercase;
+    }
+    .description{
+      padding-bottom: 15px;
+    }
+
+    .btn {
+      padding: 5px;
+      margin-top: 15px;
+      width: 140px;
+      font-variant-caps: all-small-caps;
+      font-size: 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: #fff;
+      border: 2px solid black;
+    }
+    .btn, .description, h2, .stock{
+      margin-left: 15px;
+    }
+  }
+
+
+
+
+

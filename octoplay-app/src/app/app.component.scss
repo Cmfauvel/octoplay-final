@@ -1,0 +1,26 @@
+.footer {
+    display: none;
+}
+.main, .large {
+    width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+    .main {
+        width: calc(100% - 70px);
+        margin-left: 70px;
+        min-height: 80vh;
+    }
+    .footer {
+        display: block;
+        width: calc(100% - 70px);
+        margin-left: 70px;
+        margin-top: 0px;
+        background-color: #fdf489;
+        min-height: 20vh;
+    }
+    .large {
+        width: calc(100% - 25%);
+        margin-left: 25%;
+    }
+}

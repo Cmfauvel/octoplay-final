@@ -1,0 +1,163 @@
+
+
+@import url(../../../_styles/fonts.scss);
+
+.desktop {
+  display: none;
+}
+.container {
+    font-family: "Avenir Regular";
+    padding: 50px 0px;
+    .title {
+        position: absolute;
+        right: 15px;
+        top: 0;
+        z-index: 11;
+        font-family: "Octypo";
+        font-variant-caps: all-small-caps;
+        font-size: 50px;
+    }
+    .steps {
+        margin-top: 20px;
+        display: flex;
+        width: 80%;
+        margin-left: 10%;
+        justify-content: space-around;
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .circle {
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            padding: 5px;
+            color: #f7e826;
+            font-size: 22px;
+            border: 1px solid black;
+            background-color: black;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+        }
+        .disabled {
+            color: black;
+            background-color: transparent;
+        }
+    }
+    .cards {
+        margin-top: 20px;
+        padding: 30px 30px;
+        margin-bottom: 200px;
+        .card {
+            padding-left: 25px;
+        }
+        .card--known {
+            font-family: "Avenir Regular";
+            form {
+                display: flex;
+                .radio__button {
+                    cursor: pointer;
+                    margin-top: 6px;
+                    width: 20px;
+                    height: 20px;
+                }
+                .bloc-card {
+                    padding-left: 20px;
+                }
+            }
+            .bloc-icons {
+                padding-left: 20px;
+                .material-icons {
+                    color: black;
+                }
+            }
+        }
+        .btn {
+            margin-top: 40px;
+            width: 140px;
+        }
+    }
+    .ban {
+        position: fixed;
+        z-index: 10;
+        bottom: 70px;
+        width: 100%;
+        min-height: 80px;
+        background-color: white;
+        box-shadow: 0px 0px 12px 3px gray;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0;
+        h5 {
+          margin: 5px 0;
+        }
+        p {
+          margin: 0;
+        }
+      }
+   
+}
+@media screen and (min-width: 1024px) {
+    
+    .desktop {
+        display: block;
+    }
+    .container {
+        .mobile {
+            display: none;
+        }
+        .blocs {
+            display: flex;
+            width: 100%;
+            min-height: 70vh;
+            .cards {
+                width: 50%;
+                max-height: 70vh;
+                overflow-y: scroll;
+                margin-bottom: 0;
+            }
+            .tab {
+                width: 50%;
+                align-self: flex-end;
+                font-family: "Avenir Regular";
+                background-color: #fdf489;
+                max-height: calc(240px);
+                .prices {
+                  display: flex;
+                  flex-direction: column;
+                  border-top: 1px solid black;
+                  padding-top: 20px;
+          
+                  .price__livraison,
+                  .price__total,
+                  .price__sub {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0 25px;
+                    p {
+                      margin: 0;
+                    }
+                  }
+                  .price__total {
+                    font-family: "Avenir Bold";
+                    padding-bottom: 10px;
+                  }
+                  .underline {
+                    width: 90%;
+                    margin-left: 5%;
+                    padding: 0;
+                  }
+                }
+            }
+        }
+    }
+    
+}

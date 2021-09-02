@@ -1,0 +1,10 @@
+<app-nav [isAccueil] = "isAccueil" [isClosed]="isMenuClosed">
+  </app-nav>
+  <div class="main" [class.large]="!isMenuClosed">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="footer" [class.large]="!isMenuClosed">
+    <app-footer></app-footer>
+  </div>
+  <!-- [class.main]="isMenuClosed" -->
+

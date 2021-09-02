@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="desktop">
+        <div class="img">
+            <img class="img" src="https://firebasestorage.googleapis.com/v0/b/octoplay-1ffe4.appspot.com/o/test%2Fpions.jpg?alt=media&token=f0fcb5cf-832e-4485-9601-767d1fa43609">
+        </div>
+    </div>
+    <div class="title">
+        <p>Mon panier</p>
+    </div>
+    <div class="blocs" *ngIf="currentOrder">
+        <div class="bloc tab">
+            <span class="desktop">
+                <h3>Récapitulatif</h3>
+            </span>
+            <div class="prices">
+                <div class="price__sub">
+                    <p>Sous-total de la commande 
+                        <span *ngIf="nbItems < 2">({{nbItems}} article)</span>
+                        <span *ngIf="nbItems > 1">({{nbItems}} articles)</span>
+                    </p>
+                    <p>{{currentOrder.price}}€</p>
+                </div>
+                <hr class="underline">
+                <div class="price__livraison" *ngIf="currentOrder">
+                    <p>Frais de livraison</p>
+                    <p>3,5 €</p>
+                </div>
+                <hr class="underline">
+                <div class="price__livraison" *ngIf="currentOrder">
+                    <p>TVA</p>
+                    <p>20%</p>
+                </div>
+                <hr class="underline">
+                <div class="price__total">
+                    <p>Montant total</p>
+                    <p>{{totalPrice}}€</p>
+                </div>
+            </div>
+            <div class="ban">
+                <h5 class="mobile">Montant total de la commande</h5>
+                <a routerLink="etape1">
+                    <button class="btn">Valider</button>
+                </a>
+                <p class="mobile">Livraison du colis estimée entre ...</p>
+            </div>
+        </div>
+        <div class="bloc list" *ngIf="totalPrice != 3.5">
+            <h3>Détails</h3>
+            <div class="rows" *ngFor="let product of dataList; let i = index">
+                <div class="row" *ngIf="i % 2 == 0">
+                    <div class="column">
+                        <img src="{{product.path}}" alt="">
+                    </div>
+                    <div class="column text">
+                        <p class="name">{{product.name}}</p>
+                        <p class="details">
+                            <span class="price-product">Prix total : {{product.price}} €</span>
+                            <span>Quantité : {{ product.qty }} <span class="material-icons">edit</span></span>
+                        </p>
+                    </div>
+                </div>
+                <div class="row" *ngIf="i % 2 != 0">
+                    <div class="column">
+                        <p class="name">{{product.name}}</p>
+                        <p class="details">
+                            <span class="price-product">{{product.price}} €</span>
+                            <span>Qté : {{ product.qty }}</span>
+                        </p>
+
+                    </div>
+                    <div class="column">
+                        <img src="{{product.path}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bloc empty-basket" *ngIf="totalPrice == 3.5">
+
+            <p>Vous n'avez pas d'article dans votre panier pour le moment.</p>
+            <div class="row">
+                <p>Allez voir nos produits : </p>
+                <button class="btn" [routerLink]="['/jeux/1']">Jeux</button>
+            </div>
+        </div>
+    </div>
+
+</div>

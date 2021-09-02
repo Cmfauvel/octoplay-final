@@ -1,0 +1,9 @@
+{
+    "/apiOctoplay/": {
+   "target": "http://localhost:8080/app-0.0.1-octoplay",
+   "pathRewrite": {
+     "^/api": ""
+   },
+   "secure": false
+   }
+   }

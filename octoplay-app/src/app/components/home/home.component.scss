@@ -1,0 +1,76 @@
+@import url('../../_styles/fonts.scss');
+
+.container {
+  width: 100%;
+}
+.container__carousel--desktop {
+  display: none;
+}
+.container__grid--mobile {
+  .title__page {
+    font-family: "Octypo";
+    font-size: 52px;
+    font-variant-caps: all-small-caps;
+    margin-left: 15px;
+    p {
+      position: fixed;
+      z-index: 99;
+    }
+  }
+  .grid-list {
+    margin-bottom: 85px;
+    mat-grid-tile {
+      background-color: #ffff;
+      .link {
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+        color: black;
+        .img__game {
+          width: 100%;
+          height: 100%;
+        }
+        .title__game {
+          position: absolute;
+          bottom: 0px;
+          left: 5px;
+          z-index: 2;
+          font-family: "Avenir Bold";
+          font-size: 26px;
+          font-variant-caps: all-small-caps;
+        }
+        .price__game {
+          position: absolute;
+          bottom: 0px;
+          right: 5px;
+          z-index: 2;
+          font-family: "Avenir Regular";
+          font-size: 26px;
+          font-variant-caps: all-small-caps;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container__grid--mobile {
+    display: none;
+  }
+  .container__carousel--desktop {
+    display: block;
+    position: relative;
+    max-height: 100vh;
+    min-height: 100vh;
+    overflow: hidden;
+    h2 {
+      // width: 100%;
+      text-align: center;
+      padding-bottom: 10px;
+      font-family: "Avenir Bold";
+      font-size: 52px;
+      font-weight: bold;
+      z-index: 5;
+    }
+  }
+}

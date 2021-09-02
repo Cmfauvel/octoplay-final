@@ -1,0 +1,25 @@
+<div class="container">
+    <h2 mat-dialog-title>Modifier la commande</h2>
+    <div class="material-icons" (click)="close()">
+      close
+      </div>
+    <mat-dialog-content>
+<form class="form" [formGroup]="editForm" action="" method="">
+        
+    <label for="state">Statut</label>
+    <select formControlName="state" id="">
+        <option value="{{order.status}}">{{order.status}}</option>
+        <option value="waiting" *ngIf="order.status != 'waiting'">waiting</option>
+        <option value="in-delivering" *ngIf="order.status != 'in-delievering'">in-delievering</option>
+        <option value="achieved" *ngIf="order.status != 'achieved'">achieved</option>
+    </select>
+
+</form>
+
+</mat-dialog-content>
+
+<div class="alert"  [class.alertShow]="error">{{alertMessage}}</div>
+<mat-dialog-actions>
+  <button class="btn" (click)="save()">Enregistrer</button>
+</mat-dialog-actions>
+</div>

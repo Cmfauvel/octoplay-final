@@ -1,0 +1,36 @@
+<div class="container">
+    <h1 class="title__page">Inscription</h1>
+    <form class="form" [formGroup]="registerForm" action="" method="">
+        <div class="alert alert-danger text-center" role="alert" *ngIf="errorMessage">{{errorMessage}}</div>
+        <div class="alert alert-success text-center" role="alert" *ngIf="successMessage">{{successMessage}}</div>
+        <label for="lastName">Nom</label>
+        <input type="text" formControlName="lastName" name="lastName" id="lastName" class="form-control">
+        <label for="">Prénom</label>
+        <input type="text" formControlName="firstName" name="firstName" id="firstName" class="form-control">
+        <label for="">Adresse mail</label>
+        <input type="email" formControlName="mail" name="mail" id="email" class="form-control">
+        <!-- <label for="">Numéro de téléphone</label>
+        <input class="input" type="text"> -->
+        <label for="password">Mot de passe</label>
+      <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" formControlName="password"
+        name="password" />
+      <label for="password">Confirmation</label>
+      <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" formControlName="repeatPassword"
+        name="repeatPassword" />
+      <div class="input-group-append">
+        <span class="input-group-text">
+          <i class="fas" [ngClass]="{
+          'fa-eye-slash': !fieldTextType,
+          'fa-eye': fieldTextType
+        }" (click)="toggledEye()"></i> </span>
+      </div>
+        <div class="checkbox">
+            <input type="checkbox" class="checkbox" name="" id="">
+            <label for="checkbox">J'accepte les conditions générales.</label>
+        </div>
+    </form>
+
+        <button class="btn" [disabled]="registerForm.invalid" (click)="onSubmit()">S'inscrire</button>
+        <div class="logo"><img src="../../../../assets/logo/logo.svg" alt="logo"></div>
+</div>
+

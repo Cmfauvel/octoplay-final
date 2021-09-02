@@ -1,0 +1,33 @@
+.input-file {
+    display: none;
+}
+
+.container {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    .form {
+        display:flex;
+        flex-direction: column;
+        height: auto;
+          input,select{
+            padding: 9px;
+            padding-left: 15px;
+          }
+          input{
+            border: 1px solid black;
+          }
+      }
+      .alert {
+        color: green;
+        font-size: 24px;
+        font-family: 'Avenir Bold';
+        &.alertRed {
+            color: red;
+        }
+      }
+      .btn {
+        margin-top: 20px;
+      }
+}

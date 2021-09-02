@@ -1,0 +1,39 @@
+
+<div class="container">
+    <h2>Ajouter une image</h2>
+    <label for="file" class="label-file">Choisir une image</label>
+    <input class="input-file" type="file" #productPix name="image" autocomplete="off" id="file"
+        (change)="onFileSelected($event)">
+    {{namePicture}}
+    <div class="img"><img src="{{fb}}" alt="" width="200"></div>
+    <form class="form" [formGroup]="uploadForm" action="" method="">
+        
+        <label for="name">Nom</label>
+        <input type="text" formControlName="name">
+
+        
+        <label for="description">Description</label>
+        <input type="text" formControlName="description" class="form-control">
+        <label for="role">Role</label>
+        <select formControlName="role" id="">
+            <option value="principal">Principal</option>
+            <option value="secondaire">Secondaire</option>
+        </select>
+        <label for="component">Component</label>
+        <select formControlName="component" id="">
+            <option value="contact">Contact</option>
+            <option value="apropos">A propos</option>
+            <option value="autre">Autre</option>
+            <option value="aucun">Aucun</option>
+        </select>
+        <label for="produit">Produit</label>
+        <select formControlName="produit" id="" *ngIf="products">
+            <option value="{{product.id}}" *ngFor="let product of products">{{product.name}}</option>
+        </select>
+    </form>
+    <div class="alert"  [class.alertRed]="redMessage" *ngIf="alertMessage">{{alertMessage}}</div>
+
+    <!-- <a routerLink='/../../profil'> -->
+    <button class="btn" router (click)="onUpload()">Ajouter</button>
+    <!-- </a> -->
+</div>
