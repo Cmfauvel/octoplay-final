@@ -12,17 +12,15 @@ import { User } from '../_models/user';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-  public isConnected: boolean = false;
-  classToggled: boolean = false;
-  isClicked: boolean = false;
-  menuOpen: boolean = false;
+  public isConnected = false;
+  classToggled = false;
+  isClicked = false;
+  menuOpen = false;
   userId;
-  @Input() mouseFirstOut: boolean = false;
-
+  @Input() mouseFirstOut = false;
   @Input() isAccueil: boolean;
   currentUser: User;
-  @Input() isClosed: boolean = false;
-
+  @Input() isClosed = false;
   items = [
     {
       title: 'Jeux',
@@ -43,21 +41,19 @@ export class NavComponent implements OnInit {
   constructor(
     private authService: AuthenticationService
   ) { }
-  ngOnInit(): void {
 
+  ngOnInit(): void {
     try {
       this.authService.currentUserSubject.subscribe((response) => {
         this.currentUser = response;
-        console.log(this.currentUser)
       }, (err) => {
-        console.log(err)
+        console.log(err);
       })
       this.userId = this.authService.getUserId();
       this.authService.findUserById();
-    } catch(error) {
-      console.log("__Error handled gracefully : ", error.name)
-    }
-    
+    } catch (error) {
+      console.log("__Error handled gracefully : ", error.name);
+    };
   }
 
   logout(): void {
@@ -72,7 +68,7 @@ export class NavComponent implements OnInit {
   menuDesktopOpen(event: any): void {
     if (!this.isAccueil && this.mouseFirstOut) {
       this.isClosed = false;
-    }
+    };
   }
 
   resetMouseFirstOut(): void {
@@ -83,7 +79,7 @@ export class NavComponent implements OnInit {
   menuDesktopClosed(event: any): void {
     if (!this.isAccueil) {
       this.isClosed = true;
-    }
+    };
     this.mouseFirstOut = true;
   }
 }

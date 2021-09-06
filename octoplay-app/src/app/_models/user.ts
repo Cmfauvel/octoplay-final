@@ -6,5 +6,5 @@ export interface User {
     lastName?: string;
     role_id?: number;
     addresses?: [];
-    commandes?: []
-}
+    commandes?: [];
+};

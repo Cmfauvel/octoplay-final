@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { ImagesService } from 'src/app/services/images.service';
 import { Image } from 'src/app/_models/img';
 
@@ -24,7 +23,6 @@ export class EditImgComponent implements OnInit {
     this.initEditImgForm();
   }
 
-
   initEditImgForm(): void {
     this.showForm = !this.showForm;
     this.editImgForm = this.formBuilder.group({
@@ -33,14 +31,14 @@ export class EditImgComponent implements OnInit {
       component: this.formBuilder.control(''),
       role: this.formBuilder.control(''),
       produit: this.formBuilder.control('')
-    })
+    });
     this.editImgForm.setValue({
       name: this.image.name,
       description: this.image.description,
       component: this.image.component,
       role: this.image.role,
       produit: this.image.ProductId
-    })
+    });
   }
 
   close(): void {
@@ -50,7 +48,6 @@ export class EditImgComponent implements OnInit {
   save(): void {
     this.imgService.update(this.image.id, this.editImgForm.value).subscribe((resp) => {
       this.imgService.getAllImages();
-    })
+    });
   }
-
 }

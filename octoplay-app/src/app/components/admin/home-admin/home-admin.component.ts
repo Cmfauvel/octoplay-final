@@ -24,7 +24,6 @@ export class HomeAdminComponent implements OnInit {
     private imgService: ImagesService) { }
 
   ngOnInit(): void {
-    
     this.imgService.getAllImages();
     this.imgService.currentImagesSubject.subscribe((resp) => {
       this.images = resp;
@@ -32,7 +31,6 @@ export class HomeAdminComponent implements OnInit {
 
     this.productService.selectAll();
     this.productService.currentProductsSubject.subscribe((resp) => {
-      console.log(resp)
       this.products = resp;
     });
 
@@ -40,11 +38,10 @@ export class HomeAdminComponent implements OnInit {
     this.catService.currentCategoriesSubject.subscribe((resp) => {
       this.cats = resp;
     });
-    
   }
 
   uploadImage(): void {
-    this.onImage = !this.onImage;
+    this.onImage = true;
     this.onData = false;
     this.onProduct = false;
     this.onCategory = false;
@@ -58,17 +55,16 @@ export class HomeAdminComponent implements OnInit {
   }
 
   uploadProduct(): void {
-    this.onProduct = !this.onProduct;
+    this.onProduct = true;
     this.onImage = false;
     this.onData = false;
     this.onCategory = false;
   }
 
   uploadCategory(): void {
-    this.onCategory = !this.onCategory;
+    this.onCategory = true;
     this.onImage = false;
     this.onData = false;
     this.onProduct = false;
   }
-
 }

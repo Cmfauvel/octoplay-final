@@ -14,41 +14,36 @@ export class EditOrderComponent implements OnInit {
   order: Order;
   alertMessage: string;
   error: boolean = false;
-    constructor(@Inject(MAT_DIALOG_DATA) public data,
+  constructor(@Inject(MAT_DIALOG_DATA) public data,
     public dialogRef: MatDialogRef<EditOrderComponent>,
     private formBuilder: FormBuilder,
     private orderService: OrderService) { }
-  
-    ngOnInit(): void {
-      this.order = this.data;
-      console.log(this.order)
-      this.initEditForm();
-    }
-  
-    
-    initEditForm(): void{
-        this.editForm = this.formBuilder.group({
-          state: this.formBuilder.control('', [Validators.required])
-         
-        });
-        this.editForm.setValue({
-          state: this.order.status
-        });
-      
-    }
-  
-    close(): void {
-      this.dialogRef.close();
-    }
-  
-    save(): void {
 
-      this.orderService.update(this.order.user_id, this.order.id, this.editForm.value).subscribe((resp) => {
-        this.alertMessage = resp.message;
-        this.orderService.selectAll();
-              if(this.alertMessage == "L'ajout à la base de données a échoué.")
-              this.error = true;
-      })
-    }
-  
+  ngOnInit(): void {
+    this.order = this.data;
+    console.log(this.order)
+    this.initEditForm();
+  }
+
+  initEditForm(): void {
+    this.editForm = this.formBuilder.group({
+      state: this.formBuilder.control('', [Validators.required])
+    });
+    this.editForm.setValue({
+      state: this.order.status
+    });
+  }
+
+  close(): void {
+    this.dialogRef.close();
+  }
+
+  save(): void {
+    this.orderService.update(this.order.user_id, this.order.id, this.editForm.value).subscribe((resp) => {
+      this.alertMessage = resp.message;
+      this.orderService.selectAll();
+      if (this.alertMessage == "L'ajout à la base de données a échoué.")
+        this.error = true;
+    });
+  }
 }

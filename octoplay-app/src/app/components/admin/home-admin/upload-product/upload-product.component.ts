@@ -1,7 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -37,11 +35,11 @@ export class UploadProductComponent implements OnInit {
   }
 
   save(): void {
+    console.log(this.uploadForm.value)
     this.productService.create(this.uploadForm.value).subscribe((resp) => {
-      console.log(resp)
       this.productService.selectAll();
       this.alertMessage = resp.message;
-      if (this.alertMessage == "L'ajout à la base de données a échoué.")
+      if (this.alertMessage === `L'ajout à la base de données a échoué.`)
         this.error = true;
     });
   }

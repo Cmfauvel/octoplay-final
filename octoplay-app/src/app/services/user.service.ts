@@ -12,11 +12,11 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  public findOne(id){
+  public findOne(id): Observable<any> {
     return this.http.get<User>(this.baseUrl + `/users/basicsInfos/${id}`);
   }
 
-  public update(id, newValues) {
+  public update(id, newValues): Observable<any> {
     return this.http.put<any>(this.baseUrl + `/user/${id}`, newValues);
   }
 
@@ -24,7 +24,7 @@ export class UserService {
     return this.http.put<User>(this.baseUrl + `/user/updatePassword/${id}`, password);
   }
 
-  public getNewPassword(mail) {
+  public getNewPassword(mail): Observable<any> {
     return this.http.get<any>(this.baseUrl + `/getMailForNewPassword/${mail}`);
   }
 

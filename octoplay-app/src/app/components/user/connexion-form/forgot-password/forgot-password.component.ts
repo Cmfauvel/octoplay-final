@@ -15,9 +15,10 @@ export class ForgotPasswordComponent implements OnInit {
   user: User;
   newPasswordForm: FormGroup;
   code: any;
-  isClicked: boolean = false;
+  isClicked = false;
   fieldTextType: boolean;
-  userId;
+  userId: string;
+  alertMessage = '';
 
   constructor(private fb: FormBuilder,
     private userService: UserService,
@@ -25,17 +26,19 @@ export class ForgotPasswordComponent implements OnInit {
     private auth: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.userId = this.auth.getUserId();
     this.initRecupForm();
     this.initNewPasswordForm();
-
+    try {
+      this.userId = this.auth.getUserId();
+    } catch (err) {
+      console.log('__Error handled gracefully : ', err)
+    }
   }
-
 
   initRecupForm(): void {
     this.recupForm = this.fb.group({
       mail: this.fb.control('', [Validators.required, Validators.email])
-    })
+    });
   }
 
   initNewPasswordForm(): void {
@@ -54,10 +57,10 @@ export class ForgotPasswordComponent implements OnInit {
 
   sendMail(): void {
     this.isClicked = !this.isClicked;
+    console.log(this.recupForm.value)
     this.userService.getNewPassword(this.recupForm.value.mail)
       .subscribe(
         (response) => {
-          console.log(response)
           this.user = response.user;
           this.code = response.nb;
           return this.user + this.code;
@@ -72,7 +75,6 @@ export class ForgotPasswordComponent implements OnInit {
     if (this.newPasswordForm.value.code == this.code && this.newPasswordForm.value.password == this.newPasswordForm.value.repeatPassword) {
       this.userService.updatePassword(this.user.id, this.newPasswordForm.value).subscribe(
         (data) => {
-          console.log('mdp modifié');
           this.router.navigate(['/connexion'])
         },
         (error) => {
@@ -80,7 +82,8 @@ export class ForgotPasswordComponent implements OnInit {
         }
       );
     } else {
-      console.log("erreur")
+      console.log("erreur");
+      this.alertMessage = 'Le code ne correspond pas ou les mots de passe ne sont pas identiques.';
     };
   }
 }

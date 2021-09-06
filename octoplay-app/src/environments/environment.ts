@@ -6,13 +6,13 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:3000/api/v1',
   firebaseConfig : {
-    apiKey: "AIzaSyBYfGlhMoktL9p7DS-TjlnVQqxfVrAQZlM",
-    authDomain: "octoplay-1ffe4.firebaseapp.com",
-    projectId: "octoplay-1ffe4",
-    storageBucket: "octoplay-1ffe4.appspot.com",
-    messagingSenderId: "116952089442",
-    appId: "1:116952089442:web:cbae4089005c932548623b",
-    measurementId: "G-ZKYBFEV3X3"
+    apiKey: 'AIzaSyBYfGlhMoktL9p7DS-TjlnVQqxfVrAQZlM',
+    authDomain: 'octoplay-1ffe4.firebaseapp.com',
+    projectId: 'octoplay-1ffe4',
+    storageBucket: 'octoplay-1ffe4.appspot.com',
+    messagingSenderId: '116952089442',
+    appId: '1:116952089442:web:cbae4089005c932548623b',
+    measurementId: 'G-ZKYBFEV3X3'
   }
 };
 

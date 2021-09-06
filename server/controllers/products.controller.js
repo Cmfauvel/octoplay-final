@@ -45,6 +45,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.create = (req, res) => {
+  const cat = parseInt(req.body.cat);
   Product.create({
     description: req.body.description,
     name: req.body.name,
@@ -52,7 +53,7 @@ exports.create = (req, res) => {
     utilisation: req.body.utilisation,
     fabrication: req.body.fabrication,
     price: req.body.price,
-    CategoryId: req.body.cat
+    category_id: cat
   }).then((resp) => {
     console.log(resp)
     res.send({message: "Produit ajouté."});

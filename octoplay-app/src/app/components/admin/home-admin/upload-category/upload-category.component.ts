@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -33,9 +32,8 @@ export class UploadCategoryComponent implements OnInit {
     this.catService.create(this.uploadForm.value).subscribe((resp) => {
       this.catService.selectAll();
       this.alertMessage = resp.message;
-      if (this.alertMessage == "L'ajout à la base de données a échoué.")
+      if (this.alertMessage === `L'ajout à la base de données a échoué.`)
         this.error = true;
     });
   }
-
 }

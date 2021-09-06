@@ -1,7 +1,5 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { forkJoin } from 'rxjs';
 import { CategoryService } from 'src/app/services/category.service';
 import { ImagesService } from 'src/app/services/images.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -12,7 +10,6 @@ import { Category } from 'src/app/_models/cat';
 import { Image } from 'src/app/_models/img';
 import { Order } from 'src/app/_models/order';
 import { Product } from 'src/app/_models/product';
-import { User } from 'src/app/_models/user';
 import { EditCategoryComponent } from '../edit-category/edit-category.component';
 import { EditImgComponent } from '../edit-img/edit-img.component';
 import { EditOrderComponent } from '../edit-order/edit-order.component';
@@ -42,34 +39,32 @@ export class DataComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
-
     this.imgService.getAllImages();
     this.imgService.currentImagesSubject.subscribe((resp) => {
       this.images = resp;
-    })
+    });
     this.productService.selectAll();
     this.productService.currentProductsSubject.subscribe((resp) => {
       this.products = resp;
-    })
+    });
     this.catService.selectAll();
     this.catService.currentCategoriesSubject.subscribe((resp) => {
       this.cats = resp;
-    })
-
+    });
     this.orderService.allOrdersSubject.subscribe((resp) => {
       this.orders = resp;
-      console.log(resp)
-    })
+      console.log(resp);
+    });
     this.orderService.selectAll();
-  };
+  }
 
   showProducts(): void {
     this.visibleProducts = !this.visibleProducts;
-  };
+  }
 
   showImages(): void {
     this.visibleImages = !this.visibleImages;
-  };
+  }
 
   showOrders(): void {
     this.visibleOrders = !this.visibleOrders;
@@ -87,7 +82,7 @@ export class DataComponent implements OnInit {
         });
       };
     });
-  };
+  }
 
   deleteCat(id: number): void {
     const dialogRef = this.matDialog.open(ConfirmComponent, {
@@ -102,8 +97,7 @@ export class DataComponent implements OnInit {
         });
       };
     });
-  };
-
+  }
 
   deleteProduct(id: number): void {
     const dialogRef = this.matDialog.open(ConfirmComponent, {
@@ -118,12 +112,12 @@ export class DataComponent implements OnInit {
         });
       };
     });
-  };
+  }
 
   deleteOrder(id: number): void {
     const dialogRef = this.matDialog.open(ConfirmComponent, {
       width: '350px',
-      data: "Voulez-vous supprimer ce produit ?"
+      data: 'Voulez-vous supprimer cette commande ?'
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
@@ -132,7 +126,7 @@ export class DataComponent implements OnInit {
         // });
       };
     });
-  };
+  }
 
   showCats(): void {
     this.visibleCats = !this.visibleCats;
@@ -146,7 +140,7 @@ export class DataComponent implements OnInit {
       autoFocus: true,
       data: image
     });
-  };
+  }
 
   openEditProduct(product: Product): void {
     const dialogConfig = new MatDialogConfig();
@@ -156,7 +150,7 @@ export class DataComponent implements OnInit {
       autoFocus: true,
       data: product
     });
-  };
+  }
 
   openEditOrder(order: Order): void {
     const dialogConfig = new MatDialogConfig();
@@ -166,7 +160,7 @@ export class DataComponent implements OnInit {
       autoFocus: true,
       data: order
     });
-  };
+  }
 
   openEditCat(Cat: Category): void {
     const dialogConfig = new MatDialogConfig();
@@ -176,5 +170,5 @@ export class DataComponent implements OnInit {
       autoFocus: true,
       data: Cat
     });
-  };
+  }
 }

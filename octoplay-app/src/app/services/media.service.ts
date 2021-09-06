@@ -7,7 +7,7 @@ import { ReplaySubject } from 'rxjs';
 export class MediaService {
   private matches = new ReplaySubject<boolean>(1);
   public match$ = this.matches.asObservable();
-  constructor(public readonly query: string) { 
+  constructor(public readonly query: string) {
     if (window) {
       const mediaQueryList = window.matchMedia(this.query);
       // here we pass value to our ReplaySubject

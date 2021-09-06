@@ -1,6 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef} from '@angular/material/dialog';
 import { AddressService } from 'src/app/services/address.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Address } from 'src/app/_models/address';
@@ -13,13 +13,11 @@ import { User } from 'src/app/_models/user';
 })
 export class DialogNewAddressComponent implements OnInit {
   newAddressForm: FormGroup;
-  alertMessage: string = "";
+  alertMessage = '';
   showMessage: boolean;
   currentUser: User;
   addresses: Address[];
-  userId;
-
-
+  userId: string;
   constructor(
     public dialogRef: MatDialogRef<DialogNewAddressComponent>,
     private fb: FormBuilder,
@@ -60,9 +58,7 @@ export class DialogNewAddressComponent implements OnInit {
       (resp) => {
         this.AddressService.selectAddresses(this.userId);
         this.alertMessage = resp.message;
-        console.log('adresse ajoutée');
         this.showMessage = !this.showMessage;
       });
   }
-
 }

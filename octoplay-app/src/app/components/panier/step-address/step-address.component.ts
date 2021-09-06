@@ -32,36 +32,34 @@ export class StepAddressComponent implements OnInit {
     private addressService: AddressService,
     private orderService: OrderService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.initForm();
     this.orderService.currentOrderSubject.subscribe((resp) => {
       this.currentOrder = resp;
       this.totalPrice = this.currentOrder.price + this.currentOrder.price * 0.2 + 3.5;
-    })
+    });
     this.auth.currentUserSubject.subscribe((resp) => {
       this.currentUser = resp;
       this.addresses = resp.addresses;
-    })
+    });
     this.auth.findUserById();
     this.addressService.currentAddressesSubject.subscribe((resp) => {
       this.addresses = resp;
-      console.log(resp)
-    })
+    });
     this.userId = this.auth.getUserId();
-    console.log(this.userId)
     this.addressService.selectAddresses(this.userId);
     this.orderService.selectOrder(this.userId);
   }
 
-  initForm(){
+  initForm(): void {
     this.selectForm = this.formBuilder.group({
       addressId: this.formBuilder.control('')
-    })
+    });
   }
 
-  openDialogNewAddress() {
+  openDialogNewAddress(): void {
     const dialogConfig = new MatDialogConfig();
     this.matDialog.open(DialogNewAddressComponent, {
       width: '100%',
@@ -69,6 +67,7 @@ export class StepAddressComponent implements OnInit {
       autoFocus: true
     });
   }
+
   openDialogEditAddress(address: Address): void {
     const dialogConfig = new MatDialogConfig();
     this.matDialog.open(DialogEditAddressComponent, {
@@ -79,26 +78,23 @@ export class StepAddressComponent implements OnInit {
     });
   }
 
-  onSubmit(){
-    console.log(this.selectForm.value)
+  onSubmit(): void {
     this.orderService.update(this.userId, this.currentOrder.id, this.selectForm.value).subscribe((resp) => {
-      console.log(resp)
+      console.log(resp);
     })
   }
 
-  delete(id){
+  delete(id) {
     const dialogRef = this.matDialog.open(ConfirmComponent, {
       width: '350px',
       data: "Voulez-vous supprimer cette adresse ?"
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.addressService.delete(this.currentUser.id, id).subscribe((resp) => {
-          console.log(resp)
-          this.addressService.selectAddresses(this.userId)
-        })
+        this.addressService.delete(this.currentUser.id, id).subscribe(() => {
+          this.addressService.selectAddresses(this.userId);
+        });
       };
     });
-    
   }
 }

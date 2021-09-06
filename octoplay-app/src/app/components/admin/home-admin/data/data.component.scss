@@ -31,6 +31,7 @@
             border: 1px solid black;
             border-bottom: none;
             background-color: transparent;
+            padding-right: 5px;
             &:first-of-type {
                 background-color: black;
                 color: #fdf489;
@@ -45,6 +46,7 @@
             text-align: right;
             float: left;
             font-weight: bold;
+            padding-left: 5px;
         }
         .img {
             padding-top: 20px;

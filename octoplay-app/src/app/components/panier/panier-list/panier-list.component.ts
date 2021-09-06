@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { forkJoin } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { ImagesService } from 'src/app/services/images.service';
 import { OrderService } from 'src/app/services/order.service';
 import { ProductService } from 'src/app/services/product.service';
+import { ConfirmComponent } from 'src/app/_helpers/confirm/confirm.component';
 import { Image } from 'src/app/_models/img';
 import { Item } from 'src/app/_models/item';
 import { Order } from 'src/app/_models/order';
-import { Product } from 'src/app/_models/product';
+import { DialogEditItemComponent } from './dialog-edit-item/dialog-edit-item.component';
 
 @Component({
   selector: 'app-panier-list',
@@ -23,7 +23,6 @@ export class PanierListComponent implements OnInit {
   images: Image[];
   items: Item[];
   listProducts = [];
-  map: Map<Object[], Object>;
   joinList = [];
   dataList;
   newItem;
@@ -35,7 +34,7 @@ export class PanierListComponent implements OnInit {
   constructor(private orderService: OrderService,
     private auth: AuthenticationService,
     private productService: ProductService,
-    private imgService: ImagesService) { }
+    private matDialog: MatDialog) { }
 
   ngOnInit(): void {
     this.userId = this.auth.getUserId();
@@ -43,44 +42,15 @@ export class PanierListComponent implements OnInit {
       (resp: Order) => {
         this.currentOrder = resp;
         this.totalPrice = this.currentOrder.price + this.currentOrder.price * 0.2 + 3.5;
-        this.items = resp.items;
-        this.nbItems = this.items.length;
-        const tabQuery = [];
-        for (let i = 0; i < this.items.length; i++) {
-           this.nbItems += this.items[i].qty - 1;
-                console.log(this.nbItems)
-          console.log(this.items[i].qty)
-          tabQuery.push(this.productService.getOneProduct(this.items[i].ProductId))
-        }
-        forkJoin(tabQuery).subscribe((resp) => {
-          this.listProducts = resp;
-          console.log('LISTE DE PRODUITS :', resp)
-          for (let i = 0; i < this.listProducts.length; i++) {
-            this.items.map(item => {
-              if (item.ProductId == this.listProducts[i].id) {
-                let count = (this.listProducts[i].images.length - 1);
-                let nb = Math.floor(Math.random() * count);
-                this.newItem = {
-                  id: item.id,
-                  qty: item.qty,
-                  price: item.price,
-                  name: this.listProducts[i].name,
-                  path: this.listProducts[i].images[nb].path
-                }
-                this.joinList.push(this.newItem)
-                this.dataList = [...new Set(this.joinList)];
-              }
-            })
-            console.log(this.dataList)
-          }
+        this.orderService.currentItemsSubject.subscribe((resp) => {
+          this.items = resp;
         })
-
-
+        this.orderService.selectAllItems(this.currentOrder.id);
+       
       }),
       (err: any) => {
-
-      }
-
+        console.log(err);
+      };
     this.orderService.selectOrder(this.userId);
   }
 
@@ -98,16 +68,34 @@ export class PanierListComponent implements OnInit {
   getListOrder() {
     for (let i; i < this.items.length; i++) {
       this.productService.getOneProduct(this.items[i].ProductId).subscribe((resp) => {
-        this.listProducts.push(resp)
-        console.log(this.listProducts)
-      })
-    }
+        this.listProducts.push(resp);
+      });
+    };
   }
 
-
-
-  updateOrder() {
+  openEditItem(item: Item): void {
+    const dialogConfig = new MatDialogConfig();
+    this.matDialog.open(DialogEditItemComponent, {
+      width: '350px',
+      autoFocus: true,
+      data: item
+    });
   }
 
+  deleteItem(id: number): void {
+    const dialogRef = this.matDialog.open(ConfirmComponent, {
+      width: '350px',
+      data: 'Voulez-vous supprimer ce produit ?'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.orderService.deleteItem(id, this.userId).subscribe((resp) => {
+          this.orderService.selectAllItems(this.currentOrder.id);
+          this.orderService.selectOrder(this.userId);
+          this.orderService.updatePriceOrder(this.currentOrder.id, this.userId);
+        });
+      };
+    });
+  }
 }
 

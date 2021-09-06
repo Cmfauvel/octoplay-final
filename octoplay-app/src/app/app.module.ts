@@ -12,19 +12,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
-import { environment } from "../environments/environment";
-import {
-  AngularFireStorageModule,
-  AngularFireStorageReference,
-  AngularFireUploadTask
-} from "@angular/fire/storage";
+import { environment } from '../environments/environment';
+import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireModule } from '@angular/fire';
 
-//COMPONENTS
+ //COMPONENTS
 import { GameComponent } from './components/games/game/game.component';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
-import { BazarComponent } from './components/bazar/bazar/bazar.component';
 import { AProposComponent } from './components/a-propos/a-propos.component';
 import { InscriptionFormComponent } from './components/user/inscription-form/inscription-form.component';
 import { ProfilUserComponent } from './components/user/profil-user/profil-user.component';
@@ -39,7 +34,6 @@ import { ForgotPasswordComponent } from './components/user/connexion-form/forgot
 import { EditProfilComponent } from './components/user/profil-user/edit-profil/edit-profil.component';
 import { ChangePasswordComponent } from './components/user/profil-user/change-password/change-password.component';
 import { HomeComponent } from './components/home/home.component';
-import { BazarDetailsComponent } from './components/bazar/bazar/bazar-details/bazar-details.component';
 import { DialogNewAddressComponent } from './components/panier/step-address/dialog-new-address/dialog-new-address.component';
 import { DialogEditAddressComponent } from './components/panier/step-address/dialog-edit-address/dialog-edit-address.component';
 import { DialogNewCardComponent } from './components/panier/panier-facturation/dialog-new-card/dialog-new-card.component';
@@ -66,13 +60,13 @@ import { OrderService } from './services/order.service';
 import { MentionsComponent } from './components/mentions/mentions.component';
 import { ConfirmSendComponent } from './components/contact/confirm-send/confirm-send.component';
 import { EditOrderComponent } from './components/admin/home-admin/edit-order/edit-order.component';
+import { DialogEditItemComponent } from './components/panier/panier-list/dialog-edit-item/dialog-edit-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     GameComponent,
-    BazarComponent,
     AProposComponent,
     InscriptionFormComponent,
     ProfilUserComponent,
@@ -87,7 +81,6 @@ import { EditOrderComponent } from './components/admin/home-admin/edit-order/edi
     EditProfilComponent,
     ChangePasswordComponent,
     HomeComponent,
-    BazarDetailsComponent,
     DialogNewAddressComponent,
     DialogEditAddressComponent,
     DialogNewCardComponent,
@@ -107,10 +100,17 @@ import { EditOrderComponent } from './components/admin/home-admin/edit-order/edi
     ConfirmComponent,
     MentionsComponent,
     ConfirmSendComponent,
-    EditOrderComponent
+    EditOrderComponent,
+    DialogEditItemComponent
   ],
 
-  entryComponents: [DialogNewAddressComponent, DialogEditAddressComponent, EditImgComponent, EditProductComponent, EditCategoryComponent, ConfirmComponent],
+  entryComponents: [
+    DialogNewAddressComponent, 
+    DialogEditAddressComponent, 
+    EditImgComponent, 
+    EditProductComponent, 
+    EditCategoryComponent, 
+    ConfirmComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -129,9 +129,16 @@ import { EditOrderComponent } from './components/admin/home-admin/edit-order/edi
     AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
   ],
   exports: [MatDialogModule],
-  providers: [HttpClientModule, CookieService, ProductService, AddressService, AuthenticationService, OrderService, 
-    { provide : HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [
+    HttpClientModule, 
+    CookieService, 
+    ProductService, 
+    AddressService, 
+    AuthenticationService, 
+    OrderService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }

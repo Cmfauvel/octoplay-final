@@ -8,11 +8,10 @@ import { Image } from 'src/app/_models/img';
   styleUrls: ['./a-propos.component.scss'],
 })
 export class AProposComponent implements OnInit {
-
   images: Image[];
   headImg: Image;
   middleImg: Image;
-  name: string = "apropos";
+  name = 'apropos';
   constructor(private imgService: ImagesService) { }
 
   ngOnInit(): void {
@@ -20,6 +19,6 @@ export class AProposComponent implements OnInit {
       this.images = response;
       this.headImg = this.images[0];
       this.middleImg = this.images[1];
-    })
+    });
   }
 }

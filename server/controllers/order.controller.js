@@ -55,20 +55,12 @@ exports.findAll = async (req, res) => {
   ]}).then((orders) => {
     console.log(orders)
     res.send(orders)
-  }).catch()
-  // orders.forEach(order => {
-
-  //   let address = order.getAddress();
-  //   let user = order.getUser();
-
-  //   let newTab = order + address + user;
-  //   console.log(newTab)
-  //   // User.findOne({where: { id: order.UserId}, attributes: ["lastName", "firstName", "mail"]}).then((user) => {
-  //   //   let newTab = order + user;
-  //   //   console.log(newTab)
-  //   //   res.send(newTab);
-  //   // })
-  // });
+  }).catch((err) => {
+    if (err) {
+      console.log(err)
+      res.send(err)
+    }
+  })
 }
 
 exports.addAddress = (req, res) => {

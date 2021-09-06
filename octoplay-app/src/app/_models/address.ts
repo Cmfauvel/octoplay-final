@@ -6,8 +6,8 @@ export interface Address {
     num: string;
     street: string;
     additionnal_information?: string;
-    tel?:string;
+    tel?: string;
     zip_code: string;
     city: string;
     country: string;
-}
+};

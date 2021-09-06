@@ -8,5 +8,5 @@ export interface Order {
     address_id?: string;
     items?: [{}];
     address?: {};
-    user?: {}
-}
+    user?: {};
+};

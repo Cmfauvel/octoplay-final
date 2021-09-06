@@ -7,5 +7,8 @@ const auth = require("../middleware/auth");
 
 const orderItem = require("../controllers/orderItem.controller.js");
 
-router.post("/order/:orderId/newItem", auth, orderItem.createOrderItem);
+router.post("/order/:orderId/newItem", auth, orderItem.createOrUpdate);
+router.put("/order/:orderId/newItem", auth, orderItem.update);
+router.get("/order/:orderId/items", orderItem.findAll);
+router.delete('/order/:id', admin, orderItem.delete);
 module.exports = router;

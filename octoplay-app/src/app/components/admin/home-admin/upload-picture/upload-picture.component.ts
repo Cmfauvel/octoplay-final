@@ -12,7 +12,6 @@ import { Image } from 'src/app/_models/img';
   styleUrls: ['./upload-picture.component.scss']
 })
 export class UploadPictureComponent implements OnInit {
-
   selectedFile: File = null;
   downloadURL: Observable<string>;
   fb: string;
@@ -31,17 +30,16 @@ export class UploadPictureComponent implements OnInit {
     private storage: AngularFireStorage,
     private imgService: ImagesService) {
     this.uploadForm = this.formBuiler.group({
-      name: "",
-      description: "",
-      component: "",
-      role: "",
-      produit: ""
-    })
+      name: '',
+      description: '',
+      component: '',
+      role: '',
+      produit: ''
+    });
   }
 
   ngOnInit(): void {
     this.initUploadForm();
-
   }
 
   initUploadForm(): void {
@@ -54,15 +52,14 @@ export class UploadPictureComponent implements OnInit {
         produit: this.formBuiler.control('')
       });
     }, 1000)
-
   }
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
     this.n = Date.now() + '-' + this.selectedFile.name;
     this.namePicture = this.selectedFile.name;
-
   }
+
   onUpload(): void {
     const filePath = `test/${this.n}`;
     const fileRef = this.storage.ref(filePath);
@@ -88,20 +85,19 @@ export class UploadPictureComponent implements OnInit {
               this.imgService.addImage(newImage).subscribe((resp) => {
                 this.alertMessage = resp.message;
                 this.imgService.getAllImages();
-                if (this.alertMessage == "L'ajout à la base de données a échoué.")
+                if (this.alertMessage === `L'ajout à la base de données a échoué.`)
                   this.error = true;
-              })
-            }
+              });
+            };
           }, err => {
-            console.log(err)
+            console.log(err);
           });
         })
       )
       .subscribe(url => {
         if (url) {
-          url;
-        }
+          return url;
+        };
       });
   }
-
 }

@@ -1,17 +1,13 @@
 <div class="container">
-    <h2 class="title" mat-dialog-title>Modifier la catégorie {{ cat.id }}</h2>
+    <h2 class="title" mat-dialog-title>Modifier la commande</h2>
     <div class="material-icons" (click)="close()">
       close
       </div>
     <mat-dialog-content>
 <form class="form" [formGroup]="editForm" action="" method="">
         
-    <label for="name">Nom</label>
-    <input type="text" formControlName="name">
-
-    
-    <label for="code">Code</label>
-    <input type="text" formControlName="code" class="form-control">
+    <label for="qty">Quantité</label>
+    <input formControlName="qty" id=""/>
 
 </form>
 
@@ -19,6 +15,6 @@
 
 <div class="alert"  [class.alertShow]="error">{{alertMessage}}</div>
 <mat-dialog-actions>
-  <button class="btn" (click)="save()">Enregistrer</button>
+  <button class="btn" (click)="update()">Modifier</button>
 </mat-dialog-actions>
 </div>

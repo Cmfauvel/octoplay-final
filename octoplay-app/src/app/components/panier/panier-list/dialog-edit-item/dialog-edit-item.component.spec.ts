@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BazarDetailsComponent } from './bazar-details.component';
+import { DialogEditItemComponent } from './dialog-edit-item.component';
 
-describe('BazarDetailsComponent', () => {
-  let component: BazarDetailsComponent;
-  let fixture: ComponentFixture<BazarDetailsComponent>;
+describe('DialogEditItemComponent', () => {
+  let component: DialogEditItemComponent;
+  let fixture: ComponentFixture<DialogEditItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BazarDetailsComponent ]
+      declarations: [ DialogEditItemComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BazarDetailsComponent);
+    fixture = TestBed.createComponent(DialogEditItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,7 +1,8 @@
 <div class="container">
     <div class="desktop">
         <div class="img">
-            <img class="img" src="https://firebasestorage.googleapis.com/v0/b/octoplay-1ffe4.appspot.com/o/test%2Fpions.jpg?alt=media&token=f0fcb5cf-832e-4485-9601-767d1fa43609">
+            <img class="img"
+                src="https://firebasestorage.googleapis.com/v0/b/octoplay-1ffe4.appspot.com/o/test%2Fpions.jpg?alt=media&token=f0fcb5cf-832e-4485-9601-767d1fa43609">
         </div>
     </div>
     <div class="title">
@@ -14,7 +15,7 @@
             </span>
             <div class="prices">
                 <div class="price__sub">
-                    <p>Sous-total de la commande 
+                    <p>Sous-total de la commande
                         <span *ngIf="nbItems < 2">({{nbItems}} article)</span>
                         <span *ngIf="nbItems > 1">({{nbItems}} articles)</span>
                     </p>
@@ -46,32 +47,41 @@
         </div>
         <div class="bloc list" *ngIf="totalPrice != 3.5">
             <h3>Détails</h3>
-            <div class="rows" *ngFor="let product of dataList; let i = index">
+            <div class="rows" *ngFor="let item of items; let i = index">
                 <div class="row" *ngIf="i % 2 == 0">
                     <div class="column">
-                        <img src="{{product.path}}" alt="">
+                        <img src="{{item.Product.images[0].path}}" alt="">
                     </div>
                     <div class="column text">
-                        <p class="name">{{product.name}}</p>
+                        <p class="name">{{item.name}}</p>
                         <p class="details">
-                            <span class="price-product">Prix total : {{product.price}} €</span>
-                            <span>Quantité : {{ product.qty }} <span class="material-icons">edit</span></span>
+                            <span class="price-item">Prix total : {{item.price}} €</span>
+                            <span>Quantité : {{ item.qty }} <span class="material-icons modal-edit"
+                                    (click)="openEditItem(item)">edit</span>
+                                <span class="material-icons" (click)="deleteItem(item.id)">
+                                    delete_outline
+                                </span></span>
                         </p>
                     </div>
                 </div>
-                <div class="row" *ngIf="i % 2 != 0">
+                <!-- <div class="row" *ngIf="i % 2 != 0">
                     <div class="column">
                         <p class="name">{{product.name}}</p>
                         <p class="details">
                             <span class="price-product">{{product.price}} €</span>
-                            <span>Qté : {{ product.qty }}</span>
+                            <span>Qté : {{ product.qty }}
+                                <span class="material-icons modal-edit" (click)="openEditItem(product)">edit</span>
+                                <span class="material-icons" (click)="deleteItem(product.id)">
+                                    delete_outline
+                                </span>
+                            </span>
                         </p>
 
                     </div>
                     <div class="column">
                         <img src="{{product.path}}" alt="">
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="bloc empty-basket" *ngIf="totalPrice == 3.5">

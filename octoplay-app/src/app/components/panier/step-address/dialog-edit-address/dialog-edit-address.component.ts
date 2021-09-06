@@ -15,11 +15,11 @@ import { Address } from 'src/app/_models/address';
 })
 export class DialogEditAddressComponent implements OnInit {
   updateAddressForm: FormGroup;
-  alertMessage: string = "";
+  alertMessage = '';
   showMessage: boolean;
   currentUser: User;
   address: Address;
-  userId;
+  userId: string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
@@ -35,7 +35,7 @@ export class DialogEditAddressComponent implements OnInit {
     this.userId = this.auth.getUserId();
     this.auth.currentUserSubject.subscribe((response) => {
       this.currentUser = response;
-    })
+    });
     this.initAddressForm();
     this.updateAddressForm.setValue({
       lastName: this.address.lastName,

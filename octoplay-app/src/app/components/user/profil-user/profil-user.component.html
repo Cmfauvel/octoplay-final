@@ -5,13 +5,10 @@
     <span> {{ currentUser.firstName }} {{ currentUser.lastName }}</span>
     <h3 class="email">Adresse email</h3>
     <span> {{ currentUser.mail }}</span>
-    <!-- <h3 class="phone__number">Numéros de téléphone</h3> -->
-    <!-- <span> {{ profil.phoneNumber }} </span> -->
     <h3 class="password">Mot de passe</h3>
     <a><span (click)="openDialogEdit()"> Modifier mon mot de passe </span></a>
     <a routerLink="edit"><button class="btn">Editer</button></a>
-    <a><span>Supprimer mon compte</span></a>
-    <!-- <a routerLink='profil-confirm-delete' (click)="deleteUser(user.id)" class="text-danger"><span> Suprimer votre compte</span></a> -->
+    <a (click)="delete()"><span>Supprimer mon compte</span></a>
   </div>
   <div class="logo"><img src="../../../../assets/logo/logo.svg" alt="logo"></div>
 </div>

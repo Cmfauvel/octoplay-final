@@ -7,18 +7,18 @@ import { AuthenticationService } from '../../services/authentication.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(public auth: AuthenticationService, public router: Router) {  }
+  constructor(public auth: AuthenticationService, public router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const token = localStorage.getItem('token');
-      if (token) {
-        console.log('Ok Guard');
-        return true;
-      } else {
-        console.log('NOk Guard');
-        this.router.navigate(['/connexion']);
-        return false;
-      } 
+    const token = localStorage.getItem('token');
+    if (token) {
+      console.log('Ok Guard');
+      return true;
+    } else {
+      console.log('NOk Guard');
+      this.router.navigate(['/connexion']);
+      return false;
+    }
   }
 }

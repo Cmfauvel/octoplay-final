@@ -1,24 +1,12 @@
-import { AfterViewInit, ChangeDetectorRef, Component,  OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { MediaService } from './services/media.service';
-import { ProductService } from './services/product.service';
-import { Category } from './_models/cat';
-import { Image } from './_models/img';
-import { Product } from './_models/product';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, AfterViewInit {
-  visitorId = "visitor-babb-4685-8bfd-5df6f456df";
-  currentCart;
-  products: Product[];
-  images: Image[];
-  cats: Category[];
-  orderId;
-  price;
+export class AppComponent implements OnInit {
   title = 'Octoplay-app';
   isAccueil: boolean = true;
   isMenuClosed: boolean = false;
@@ -40,9 +28,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.mediaService.match$.subscribe((value) => (this.isDesktop = value));
     this.onRoutingNavChange();
-
   }
-
 
   onRoutingNavChange(): void {
     this.route.queryParams.subscribe((params) => {
@@ -65,11 +51,4 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
-  ngAfterViewInit(): void {
-  
-  }
- 
-
-
 }

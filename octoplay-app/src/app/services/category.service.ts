@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Category } from '../_models/cat';
 
@@ -13,23 +13,21 @@ baseUri = `${environment.apiUrl}/categories`;
   constructor(private http: HttpClient) {
    }
 
-  selectAll(){
+  selectAll(): void{
     this.http.get<any>(this.baseUri).subscribe((resp) => {
-      console.log(resp)
       this.currentCategoriesSubject.next(resp);
-      console.log(this.currentCategoriesSubject)
     })
   }
 
-  update(id, newValues){
+  update(id, newValues): Observable<any> {
     return this.http.put<any>(this.baseUri + '/' + id, newValues);
   }
 
-  create(cat){
-    return this.http.post<any>(this.baseUri + '/insert', cat)
+  create(cat): Observable<any> {
+    return this.http.post<any>(this.baseUri + '/insert', cat);
   }
 
-  delete(id){
+  delete(id): Observable<any> {
     return this.http.delete<any>(this.baseUri + '/' + id);
   }
 }

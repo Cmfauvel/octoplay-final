@@ -11,11 +11,11 @@ import { User } from 'src/app/_models/user';
   styleUrls: ['./edit-profil.component.scss']
 })
 export class EditProfilComponent implements OnInit {
-editForm: FormGroup;
-currentUser: User;
-userId;
-alertMessage: string;
-error: boolean = false;
+  editForm: FormGroup;
+  currentUser: User;
+  userId: string;
+  alertMessage: string;
+  error: boolean = false;
 
   constructor(private fb: FormBuilder,
     private userService: UserService,
@@ -33,13 +33,11 @@ error: boolean = false;
           lastName: this.currentUser.lastName,
           firstName: this.currentUser.firstName,
           mail: this.currentUser.mail
-        })
+        });
       });
     } catch {
-      console.log("__Error handled gracefully.")
+      console.log("__Error handled gracefully.");
     }
-    
-    
   }
 
   initEditForm(): void {
@@ -60,13 +58,12 @@ error: boolean = false;
       (resp) => {
         this.authService.findUserById();
         this.alertMessage = resp.message;
-        if(this.alertMessage == "La modification a échoué.") {
+        if (this.alertMessage === 'La modification a échoué.') {
           this.error = true;
         } else {
           this.router.navigate(['/profil'])
-        }
+        };
       }
     );
   }
-
 }

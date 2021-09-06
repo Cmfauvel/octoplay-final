@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import emailjs, { EmailJSResponseStatus, init } from 'emailjs-com';
-import { ImagesService } from 'src/app/services/images.service';
-import { Image } from 'src/app/_models/img';
 
 @Component({
   selector: 'app-contact',
@@ -10,15 +8,10 @@ import { Image } from 'src/app/_models/img';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-  name: string = "contact";
-  image: Image;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     init('user_VMMU8YqvV4ygnm6WOZIRg');
-    // this.imgService.getImgByComponent(this.name).subscribe((response) => {
-    //   this.image = response[0];
-    // })
   }
   public sendEmail(e: Event): void {
     e.preventDefault();
@@ -31,7 +24,6 @@ export class ContactComponent implements OnInit {
       )
       .then(
         (result: EmailJSResponseStatus) => {
-          console.log(result.text);
           this.router.navigate(['/contact/merci']);
         },
         (error) => {
